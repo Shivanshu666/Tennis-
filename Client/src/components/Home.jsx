@@ -2,217 +2,711 @@
 import React from "react";
 import back from "../assets/t2.jpg";
 import sport from "../assets/logo2.jpeg";
+import { useRef,useEffect,useState } from "react";
+import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin, Heart } from 'lucide-react';
+import gsap from "gsap";
 
 const Home = () => {
+
+const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const [activeSection, setActiveSection] = useState('home');
+
+useEffect(() => {
+  const sections = ['home', 'about', 'categories', 'sponsors', 'contact'];
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px', // 20% from top, 70% from bottom
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+        // console.log(`🎯 Section in view: ${sectionId}`);
+        setActiveSection(sectionId);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections
+  sections.forEach(sectionId => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      // console.log(`👀 Observing section: ${sectionId}`);
+      observer.observe(element);
+    } else {
+      // console.warn(`❌ Section not found: ${sectionId}`);
+    }
+  });
+
+  // Cleanup
+  return () => {
+    sections.forEach(sectionId => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.unobserve(element);
+      }
+    });
+  };
+}, []);
+
+const toggleMobileMenu = () => {
+  setIsMobileMenuOpen(!isMobileMenuOpen);
+};
+
+  ///
+  const entryFeeRef = useRef(null);
+  const cashPrizeRef = useRef(null);
+
+  useEffect(() => {
+    // Entry Fee floating animation
+    gsap.to(entryFeeRef.current, {
+      y: -15,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut"
+    });
+
+    // Cash Prize floating animation with delay
+    gsap.to(cashPrizeRef.current, {
+      y: -12,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      delay: 0.5
+    });
+
+    // Additional rotation effects on hover
+    const entryFeeElement = entryFeeRef.current;
+    const cashPrizeElement = cashPrizeRef.current;
+
+    const handleEntryFeeHover = () => {
+      gsap.to(entryFeeElement, {
+        scale: 1.1,
+        rotation: 5,
+        duration: 0.3,
+        ease: "back.out(1.7)"
+      });
+    };
+
+    const handleEntryFeeLeave = () => {
+      gsap.to(entryFeeElement, {
+        scale: 1,
+        rotation: 0,
+        duration: 0.3,
+        ease: "back.out(1.7)"
+      });
+    };
+
+    const handleCashPrizeHover = () => {
+      gsap.to(cashPrizeElement, {
+        scale: 1.08,
+        rotation: -3,
+        duration: 0.3,
+        ease: "back.out(1.7)"
+      });
+    };
+
+    const handleCashPrizeLeave = () => {
+      gsap.to(cashPrizeElement, {
+        scale: 1,
+        rotation: 0,
+        duration: 0.3,
+        ease: "back.out(1.7)"
+      });
+    };
+
+    // Add event listeners
+    if (entryFeeElement) {
+      entryFeeElement.addEventListener('mouseenter', handleEntryFeeHover);
+      entryFeeElement.addEventListener('mouseleave', handleEntryFeeLeave);
+    }
+
+    if (cashPrizeElement) {
+      cashPrizeElement.addEventListener('mouseenter', handleCashPrizeHover);
+      cashPrizeElement.addEventListener('mouseleave', handleCashPrizeLeave);
+    }
+
+    // Cleanup
+    return () => {
+      if (entryFeeElement) {
+        entryFeeElement.removeEventListener('mouseenter', handleEntryFeeHover);
+        entryFeeElement.removeEventListener('mouseleave', handleEntryFeeLeave);
+      }
+      if (cashPrizeElement) {
+        cashPrizeElement.removeEventListener('mouseenter', handleCashPrizeHover);
+        cashPrizeElement.removeEventListener('mouseleave', handleCashPrizeLeave);
+      }
+    };
+  }, []);
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <img 
-                src={sport} 
-                alt="FSNL Tennis Logo" 
-                className="w-10 h-10 object-cover rounded-full border-2 border-blue-100"
-              />
-              <div className="flex flex-col">
-                <span className="text-lg sm:text-xl font-bold text-gray-900 tracking-tight">
-                  FSNL Tennis
-                </span>
-                <span className="text-xs text-gray-500 -mt-1 hidden sm:block">
-                  Professional Tournaments
-                </span>
-              </div>
-            </div>
+     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 shadow-2xl border-b border-gray-200/60">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-16 lg:h-20">
+      
+      {/* Logo with Premium Styling */}
+      <div className="flex items-center space-x-3 lg:space-x-4">
+        <div className="relative">
+          <img 
+            src={sport} 
+            alt="FSNL Tennis Logo" 
+            className="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-blue-100 shadow-lg"
+          />
+          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+        </div>
+        <div className="flex flex-col">
+          <span className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            FSNL Tennis
+          </span>
+          <span className="text-xs text-gray-500 -mt-1 hidden sm:block font-medium">
+            Professional Tournaments
+          </span>
+        </div>
+      </div>
 
-            {/* Navigation Links - Desktop */}
-            <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Schedule', 'Sponsors', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-1 group text-sm lg:text-base"
-                >
-                  {item}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button className="p-2 rounded-md text-gray-700 hover:bg-gray-100">
-                <i className="fas fa-bars text-lg"></i>
-              </button>
-            </div>
-
-            {/* Contact Info */}
-            <div className="hidden sm:flex items-center space-x-3">
-              <div className="flex items-center space-x-2 bg-blue-50 px-3 py-2 rounded-lg border border-blue-100">
-                <i className="fas fa-phone text-blue-600 text-sm"></i>
-                <span className="text-blue-800 font-semibold text-sm lg:text-base tracking-wide">
-                  6266970108
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Navigation Menu */}
-          <div className="md:hidden bg-white border-t border-gray-200 py-2 hidden">
-            {['Home', 'About', 'Schedule', 'Sponsors', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors duration-200"
-              >
+      {/* Desktop Navigation Links with Active State */}
+      <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+        {['Home',  'Categories', 'About', 'Sponsors', 'Contact'].map((item) => {
+          const sectionId = item.toLowerCase();
+          const isActive = activeSection === sectionId;
+          
+          return (
+            <a
+              key={item}
+              href={`#${sectionId}`}
+              className={`relative px-4 py-2 font-semibold transition-all duration-300 group ${
+                isActive 
+                  ? 'text-blue-600' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
+            >
+              <span className="text-sm xl:text-base tracking-wide relative z-10">
                 {item}
-              </a>
-            ))}
+              </span>
+              
+              {/* Active Underline */}
+              <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ${
+                isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'
+              }`}></span>
+              
+              {/* Active Dot */}
+              {isActive && (
+                <span className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+              )}
+            </a>
+          );
+        })}
+      </div>
+
+      {/* Desktop Contact Info */}
+      <div className="hidden lg:flex items-center space-x-3">
+        <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 px-4 py-2 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-blue-800 font-bold text-sm tracking-wide">6266970108</span>
+            <span className="text-blue-600 text-xs">Call Now</span>
           </div>
         </div>
-      </nav>
+      </div>
+
+      {/* Mobile Menu Button with Hamburger Icon */}
+      <div className="lg:hidden">
+        <button 
+          onClick={toggleMobileMenu}
+          className="p-3 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300"
+        >
+          <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
+            <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${
+              isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+            }`}></span>
+            <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${
+              isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
+            }`}></span>
+            <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${
+              isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+            }`}></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile Navigation Menu with Active States */}
+    <div className={`lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/60 transition-all duration-500 ease-in-out overflow-hidden ${
+      isMobileMenuOpen ? 'max-h-96 py-4 opacity-100' : 'max-h-0 py-0 opacity-0'
+    }`}>
+      <div className="space-y-1 px-4">
+        {['Home', 'About', 'Categories', 'Sponsors', 'Contact'].map((item) => {
+          const sectionId = item.toLowerCase();
+          const isActive = activeSection === sectionId;
+          
+          return (
+            <a
+              key={item}
+              href={`#${sectionId}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`flex items-center space-x-3 py-3 px-4 rounded-xl font-semibold transition-all duration-300 group ${
+                isActive
+                  ? 'text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-500'
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gradient-to-r from-blue-50 to-purple-50'
+              }`}
+            >
+              {/* Active Dot */}
+              <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                isActive 
+                  ? 'bg-blue-500 scale-125' 
+                  : 'bg-blue-500 opacity-0 group-hover:opacity-100'
+              }`}></div>
+              
+              <span className="text-base flex-1">{item}</span>
+              
+              {/* Active Checkmark */}
+              {isActive && (
+                <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              )}
+              
+              {/* Chevron for inactive items */}
+              {!isActive && (
+                <svg className="w-3 h-3 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              )}
+            </a>
+          );
+        })}    
+      </div>
+    </div>
+  </div>
+</nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center pt-5">
-        {/* Background Image with Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${back})`
-          }}
-        >
-          <div className="absolute inset-0 bg-blue-900/20 backdrop-blur-[1px]"></div>
-        </div>
 
-        {/* Main Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 lg:py-20">
-       {/* Tournament Badge */}
-<div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-6 lg:mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
-  <svg 
-    className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-300 mr-3 animate-bounce" 
-    fill="none" 
-    stroke="currentColor" 
-    viewBox="0 0 24 24"
+
+
+<section id="home" className="relative min-h-screen flex items-center justify-center p-7 md:pt-8 overflow-hidden">
+  {/* Background Image with Overlay */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{
+      backgroundImage: `url(${back})`
+    }}
   >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-  <span className="text-white font-extrabold text-xs sm:text-sm uppercase tracking-widest">
-    FSNL - KONOIKE INVITATIONAL
-  </span>
-</div>
+    <div className="absolute inset-0 bg-blue-900/20 backdrop-blur-[1px]"></div>
+  </div>
 
-          {/* Main Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-tight">
-            Tennis Tournament{' '}
-            <span className="text-blue-400 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              2025
-            </span>
-          </h1>
-
-          {/* Subtitle */}
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-blue-200 mb-6 lg:mb-8">
-            Baseline of Hope
-          </h2>
-
-          {/* Date and Location */}
-  <div className="flex flex-col lg:flex-row justify-center items-stretch gap-4 mb-8 lg:mb-12 max-w-2xl mx-auto">
-  {/* Date Card with Pulse Animation */}
-  <div className="flex-1 bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm border-l-4 border-blue-400 rounded-r-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-    <div className="flex items-center space-x-3 relative z-10">
-      <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 shadow-lg">
-        <svg 
-          className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      </div>
-      <div className="flex-1">
-        <div className="text-blue-200 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
-          TOURNAMENT DATE
+  {/* Floating Entry Fee Box - Desktop Only */}
+  <div 
+    ref={entryFeeRef}
+    className="hidden md:block absolute top-30 right-4 lg:right-8 z-20 cursor-pointer"
+  >
+    <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 sm:p-5 shadow-2xl border-2 border-yellow-300">
+      <div className="text-center">
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className="text-white font-bold text-lg sm:text-xl">₹100</span>
         </div>
-        <div className="text-white font-bold text-xl group-hover:text-blue-100 transition-colors duration-300">
-          20 - 21 DEC 2025
+        <div className="text-white text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-2 py-1 transition-colors">
+          Entry Fee
         </div>
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
       </div>
     </div>
   </div>
-  
-  {/* Venue Card with Bounce Animation */}
-  <div className="flex-1 bg-gradient-to-r from-green-500/20 to-green-600/20 backdrop-blur-sm border-l-4 border-green-400 rounded-r-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-    <div className="flex items-center space-x-3 relative z-10">
-      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-300 shadow-lg">
-        <svg 
-          className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      </div>
-      <div className="flex-1">
-        <div className="text-green-200 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
-          CHAMPIONSHIP VENUE
+
+  {/* Floating Cash Prize Box - Desktop Only */}
+  <div 
+    ref={cashPrizeRef}
+    className="hidden md:block absolute top-42 left-4 lg:left-8 z-20 cursor-pointer"
+  >
+    <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-4 sm:p-5 shadow-2xl border-2 border-green-300">
+      <div className="text-center">
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+          </svg>
+          <span className="text-white font-bold text-lg sm:text-xl">1.5 LAKHS</span>
         </div>
-        <div className="text-white font-bold text-xl group-hover:text-green-100 transition-colors duration-300">
-          Bhilai Tennis Complex, Sector-7, Bhilai
+        <div className="text-yellow-100 text-xs font-semibold uppercase tracking-wide">
+          Cash Prize
         </div>
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
       </div>
     </div>
   </div>
-</div>
-          {/* Description */}
+
+  {/* Main Content */}
+  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 lg:py-20">
+    {/* Tournament Badge */}
+    <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-6 lg:mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
+      <svg 
+        className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-300 mr-3 animate-bounce" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span className="text-white font-extrabold text-xs sm:text-sm uppercase tracking-widest">
+        FSNL - KONOIKE INVITATIONAL
+      </span>
+    </div>
+
+    {/* Main Title */}
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-tight">
+      Tennis Tournament{' '}
+      <span className="text-blue-400 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        2025
+      </span>
+    </h1>
+
+    {/* Subtitle */}
+    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-blue-200 mb-6 lg:mb-8">
+      Baseline of Hope
+    </h2>
+
+    {/* Date and Location */}
+    <div className="flex flex-col lg:flex-row justify-center items-stretch gap-4 mb-8 lg:mb-12 max-w-2xl mx-auto">
+      {/* Date Card */}
+      <div className="flex-1 bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm border-l-4 border-blue-400 rounded-r-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+        <div className="flex items-center space-x-3 relative z-10">
+          <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 shadow-lg">
+            <svg 
+              className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <div className="text-blue-200 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
+              TOURNAMENT DATE
+            </div>
+            <div className="text-white font-bold text-xl group-hover:text-blue-100 transition-colors duration-300">
+              20 - 21 DEC 2025
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Venue Card */}
+      <div className="flex-1 bg-gradient-to-r from-green-500/20 to-green-600/20 backdrop-blur-sm border-l-4 border-green-400 rounded-r-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+        <div className="flex items-center space-x-3 relative z-10">
+          <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-300 shadow-lg">
+            <svg 
+              className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <div className="text-green-200 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
+              CHAMPIONSHIP VENUE
+            </div>
+            <div className="text-white font-bold text-xl group-hover:text-green-100 transition-colors duration-300">
+              Bhilai Tennis Complex, Sector-7, Bhilai
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+
+ {/* Description */}
           <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-8 lg:mb-12 px-4">
-            Join the most prestigious amateur tennis tournament in Japan. 
+            Join the most prestigious amateur tennis tournament in Bhilai. 
             Showcase your skills, compete with the best, and experience 
             world-class facilities in this premier sporting event.
           </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-12 lg:mb-16">
-            <button className="group w-full sm:w-auto px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 shadow-2xl hover:shadow-3xl flex items-center justify-center space-x-2 lg:space-x-3">
-              <i className="fas fa-user-plus group-hover:scale-110 transition-transform duration-300 text-sm lg:text-base"></i>
-              <span className="text-sm lg:text-base">Register Now & Claim Your Spot</span>
-            </button>
-       
-          </div>
-
-          {/* Stats */}
-          {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-2xl mx-auto px-4">
-            {[
-              { number: '64', label: 'Players' },
-              { number: '¥500K', label: 'Prize Pool' },
-              { number: '2', label: 'Days' },
-              { number: '4', label: 'Courts' }
-            ].map((stat, index) => (
-              <div key={index} className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-                <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-blue-300 text-xs sm:text-sm uppercase tracking-wide">{stat.label}</div>
-              </div>
-            ))}
-          </div> */}
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="animate-bounce">
-            <i className="fas fa-chevron-down text-white/60 text-xl sm:text-2xl"></i>
+    {/* Action Buttons with Mobile Entry Fee Card */}
+    <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-12 lg:mb-16">
+      <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+        {/* Mobile Only Entry Fee Card - Register button ke upar */}
+        <div className="md:hidden bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-3 shadow-lg border-2 border-yellow-300 animate-pulse">
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-2">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-white font-bold text-base">Only ₹100 Entry Fee</span>
+            </div>
+            <div className="text-yellow-100 text-xs font-semibold uppercase mt-1">
+              Register Now!
+            </div>
           </div>
         </div>
-      </section>
+
+        <button className="group w-full sm:w-auto px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 shadow-2xl hover:shadow-3xl flex items-center justify-center space-x-2 lg:space-x-3">
+          <i className="fas fa-user-plus group-hover:scale-110 transition-transform duration-300 text-sm lg:text-base"></i>
+          <span className="text-sm lg:text-base">Register Now & Claim Your Spot</span>
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+
+  {/* Scroll Indicator */}
+  <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2">
+    <div className="animate-bounce">
+      <i className="fas fa-chevron-down text-white/60 text-xl sm:text-2xl"></i>
+    </div>
+  </div>
+</section>
 
       {/* Additional Sections */}
       <div className="bg-white">
+
+                {/* Categories Section */}
+<section id="categories" className="py-18  min-h-screen md:py-16 lg:py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12 lg:mb-16">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        Tournament Categories
+      </h2>
+      <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+        Compete across multiple age groups and skill levels with separate draws for boys and girls
+      </p>
+    </div>
+
+    {/* Prize Pool Banner */}
+    <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl p-6 sm:p-8 text-center mb-12 lg:mb-16 shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+      <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <div className="bg-white/20 rounded-full p-3 sm:p-4 backdrop-blur-sm">
+          <i className="fas fa-trophy text-white text-2xl sm:text-3xl"></i>
+        </div>
+        <div>
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">
+            CASH PRIZE UPTO 1.5 LAKHS
+          </h3>
+          <p className="text-yellow-100 text-lg sm:text-xl font-semibold">
+            Plus Gifts, T-shirt, Cap & Certificates for all participants
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Categories Grid */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 lg:mb-16">
+      {/* Red Series */}
+      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-8 bg-red-500 rounded-full"></div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Tiny Todds (Red Series)</h3>
+        </div>
+        <div className="flex items-center space-x-2 mb-4">
+          <i className="fas fa-child text-red-500 text-lg"></i>
+          <span className="text-lg font-semibold text-gray-700">Under 8</span>
+        </div>
+        <p className="text-gray-600 mb-4">Boys & Girls combined category for our youngest champions</p>
+        <div className="bg-red-50 rounded-lg p-3">
+          <div className="flex items-center space-x-2 text-red-700">
+            <i className="fas fa-tennis-ball text-red-500"></i>
+            <span className="font-medium">Red Ball Series - Perfect for beginners</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Orange Series */}
+      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-orange-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-8 bg-orange-500 rounded-full"></div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Next Generation (Orange Series)</h3>
+        </div>
+        <div className="flex items-center space-x-2 mb-4">
+          <i className="fas fa-running text-orange-500 text-lg"></i>
+          <span className="text-lg font-semibold text-gray-700">Under 10</span>
+        </div>
+        <p className="text-gray-600 mb-4">Boys & Girls developing their skills in competitive environment</p>
+        <div className="bg-orange-50 rounded-lg p-3">
+          <div className="flex items-center space-x-2 text-orange-700">
+            <i className="fas fa-tennis-ball text-orange-500"></i>
+            <span className="font-medium">Orange Ball Series - Intermediate level</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Green Series */}
+      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-8 bg-green-500 rounded-full"></div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Green Arrows (Green Series)</h3>
+        </div>
+        <div className="flex items-center space-x-2 mb-4">
+          <i className="fas fa-bullseye text-green-500 text-lg"></i>
+          <span className="text-lg font-semibold text-gray-700">Under 12</span>
+        </div>
+        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+        <div className="bg-green-50 rounded-lg p-3">
+          <div className="flex items-center space-x-2 text-green-700">
+            <i className="fas fa-tennis-ball text-green-500"></i>
+            <span className="font-medium">Green Ball Series - Advanced junior level</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Yellow Series - Junior Performance */}
+      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-8 bg-yellow-500 rounded-full"></div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Junior Performance (Yellow Series)</h3>
+        </div>
+        <div className="flex items-center space-x-2 mb-4">
+          <i className="fas fa-chart-line text-yellow-500 text-lg"></i>
+          <span className="text-lg font-semibold text-gray-700">Under 14</span>
+        </div>
+        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+        <div className="bg-yellow-50 rounded-lg p-3">
+          <div className="flex items-center space-x-2 text-yellow-700">
+            <i className="fas fa-tennis-ball text-yellow-500"></i>
+            <span className="font-medium">Yellow Ball Series - Standard competition balls</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Yellow Series - Elite */}
+      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-8 bg-yellow-600 rounded-full"></div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Elite (Yellow Series)</h3>
+        </div>
+        <div className="flex items-center space-x-2 mb-4">
+          <i className="fas fa-crown text-yellow-600 text-lg"></i>
+          <span className="text-lg font-semibold text-gray-700">Under 16</span>
+        </div>
+        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+        <div className="bg-yellow-50 rounded-lg p-3">
+          <div className="flex items-center space-x-2 text-yellow-700">
+            <i className="fas fa-medal text-yellow-600"></i>
+            <span className="font-medium">Top-tier junior competition</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Yellow Series - Challengers */}
+      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-8 bg-yellow-700 rounded-full"></div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Challengers (Yellow Series)</h3>
+        </div>
+        <div className="flex items-center space-x-2 mb-4">
+          <i className="fas fa-fire text-yellow-700 text-lg"></i>
+          <span className="text-lg font-semibold text-gray-700">Under 18</span>
+        </div>
+        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+        <div className="bg-yellow-50 rounded-lg p-3">
+          <div className="flex items-center space-x-2 text-yellow-700">
+            <i className="fas fa-star text-yellow-700"></i>
+            <span className="font-medium">Elite senior junior category</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Additional Information */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+  {/* Entry Fees */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-blue-100 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <h4 className="text-xl font-bold text-gray-900 mb-2">Entry Fees</h4>
+    <div className="text-3xl font-bold text-blue-600 mb-2">₹100</div>
+    <p className="text-gray-600">Per Event</p>
+    <div className="mt-3 text-xs text-blue-500 font-medium flex items-center justify-center">
+      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+      Affordable Participation
+    </div>
+  </div>
+
+  {/* Registration Deadline */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-green-100 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    </div>
+    <h4 className="text-xl font-bold text-gray-900 mb-2">Registration Deadline</h4>
+    <div className="text-2xl font-bold text-green-600 mb-2">15th Dec 2025</div>
+    <p className="text-gray-600 mb-3">Submit via Google Form or Direct Message</p>
+    <div className="flex justify-center space-x-2 text-xs">
+      <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full flex items-center">
+        <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Google Form
+      </span>
+      <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full flex items-center">
+        <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        Direct Message
+      </span>
+    </div>
+  </div>
+
+  {/* Awards */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-purple-100 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+      </svg>
+    </div>
+    <h4 className="text-xl font-bold text-gray-900 mb-2">Awards & Trophies</h4>
+    <div className="space-y-2 mb-3">
+      <div className="flex items-center justify-center space-x-2 text-gray-700">
+        <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+        </svg>
+        <span>Winner & Finalist</span>
+      </div>
+      <div className="flex items-center justify-center space-x-2 text-gray-700">
+        <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>3rd & 4th Place</span>
+      </div>
+    </div>
+    <div className="bg-purple-50 rounded-lg p-3 mt-3">
+      <p className="text-sm text-purple-700 font-medium flex items-center justify-center">
+        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+        </svg>
+        Gifts, T-shirt, Cap & Certificates for all
+      </p>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
         {/* About Section */}
-        <section id="about" className="py-12 sm:py-16 lg:py-20">
+        <section id="about" className="py-20 md:py-16 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -254,79 +748,11 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Schedule Section */}
-        <section id="schedule" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Tournament Schedule
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 px-4">
-                Two days of intense competition and sportsmanship
-              </p>
-            </div>
 
-            <div className="relative">
-              {/* Timeline Line - Hidden on mobile, visible on medium+ */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-200 h-full"></div>
 
-              {/* Timeline Items */}
-              <div className="space-y-8 sm:space-y-12">
-                {[
-                  {
-                    date: 'December 20, 2025',
-                    title: 'Day 1: Preliminary Rounds',
-                    events: [
-                      '8:00 AM - Registration & Warm-up',
-                      '9:00 AM - Round of 64',
-                      '1:00 PM - Round of 32',
-                      '5:00 PM - Round of 16'
-                    ]
-                  },
-                  {
-                    date: 'December 21, 2025',
-                    title: 'Day 2: Finals',
-                    events: [
-                      '9:00 AM - Quarter Finals',
-                      '1:00 PM - Semi Finals',
-                      '4:00 PM - Championship Match',
-                      '6:00 PM - Awards Ceremony'
-                    ]
-                  }
-                ].map((day, index) => (
-                  <div key={index} className="relative">
-                    {/* Timeline Dot - Hidden on mobile */}
-                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                    
-                    {/* Content */}
-                    <div className="md:w-10/12 lg:w-5/12 mx-auto md:mx-0 md:float-left md:pr-8 md:text-right first:md:float-right first:md:pl-8 first:md:text-left">
-                      <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                        <div className="text-blue-600 font-semibold mb-2 text-sm sm:text-base">
-                          {day.date}
-                        </div>
-                        <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
-                          {day.title}
-                        </h4>
-                        <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
-                          {day.events.map((event, eventIndex) => (
-                            <li key={eventIndex} className="flex items-start space-x-2">
-                              <i className="fas fa-circle text-blue-400 text-xs mt-1.5 flex-shrink-0"></i>
-                              <span>{event}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="clear-both"></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Sponsors Section */}
-        <section id="sponsors" className="py-12 sm:py-16 lg:py-20">
+        <section id="sponsors" className="py-20 md:py-16 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -351,7 +777,7 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+        <section id="contact" className="py-20 md:py-16 lg:py-20 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -363,23 +789,41 @@ const Home = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Tournament Director</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <i className="fas fa-user text-blue-600"></i>
-                    <span className="text-gray-700">John Smith</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <i className="fas fa-phone text-blue-600"></i>
-                    <span className="text-gray-700">6266970108</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <i className="fas fa-envelope text-blue-600"></i>
-                    <span className="text-gray-700">info@fsnltennis.com</span>
-                  </div>
-                </div>
-              </div>
+        <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
+  <h3 className="text-xl font-bold text-gray-900 mb-4">Tournament Directors</h3>
+  
+  <div className="grid grid-cols-1 gap-4">
+    {/* Rachna Sharma */}
+    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+        <div>
+          <p className="font-medium text-gray-900">Rachna Sharma</p>
+          <p className="text-sm text-gray-600">9303537600</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Rajesh Patil */}
+    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+        <div>
+          <p className="font-medium text-gray-900">Rajesh Patil</p>
+          <p className="text-sm text-gray-600">9893166755</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
               <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Contact</h3>
@@ -412,340 +856,121 @@ const Home = () => {
         </section>
       </div>
 
+
+
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 sm:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex justify-center space-x-4 sm:space-x-6 mb-6">
-              {['fab fa-facebook', 'fab fa-twitter', 'fab fa-instagram', 'fab fa-youtube'].map((icon, index) => (
-                <a 
-                  key={index} 
-                  href="#" 
-                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-200"
-                >
-                  <i className={`${icon} text-white text-sm sm:text-base`}></i>
-                </a>
-              ))}
-            </div>
-            <p className="text-gray-400 text-sm sm:text-base">
-              © 2025 FSNL - KONOIKE Invitational Tennis Tournament. All rights reserved.
-            </p>
+   <footer className="bg-gray-900 text-white py-12 sm:py-16">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      {/* Tournament Info */}
+      <div className="text-center md:text-left">
+        <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
+          <img 
+            src={sport} 
+            alt="FSNL Tennis Logo" 
+            className="w-10 h-10 object-cover rounded-full border-2 border-blue-400"
+          />
+          <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            FSNL Tennis
+          </span>
+        </div>
+        <p className="text-gray-300 text-sm mb-4">
+          Professional Tennis Tournaments bringing together the finest amateur talent for competitive excellence.
+        </p>
+        <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
+          <MapPin className="w-4 h-4" />
+          <span className="text-sm">Bhilai Tennis Complex, Sector-7, Bhilai</span>
+        </div>
+      </div>
+
+      {/* Quick Links */}
+      <div className="text-center">
+        <h4 className="text-lg font-semibold mb-4 text-blue-300">Quick Links</h4>
+        <div className="space-y-2">
+          {['Home', 'Categories', 'Sponsors', 'Contact'].map((item) => (
+            <a 
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="block text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Info */}
+      <div className="text-center md:text-right">
+        <h4 className="text-lg font-semibold mb-4 text-blue-300">Contact Info</h4>
+        <div className="space-y-2 text-sm text-gray-300">
+          <div className="flex items-center justify-center md:justify-end space-x-2">
+            <Phone className="w-4 h-4" />
+            <span>6266970108</span>
+          </div>
+          <div className="flex items-center justify-center md:justify-end space-x-2">
+            <Mail className="w-4 h-4" />
+            <span>info@fsnltennis.com</span>
           </div>
         </div>
-      </footer>
+      </div>
+    </div>
+
+    {/* Social Media & Copyright */}
+    <div className="border-t border-gray-700 pt-8">
+      <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        {/* Social Media Icons with Lucide */}
+        <div className="flex justify-center space-x-4">
+          {[
+            { 
+              icon: <Facebook className="w-5 h-5" />,
+              color: 'hover:bg-blue-600',
+              label: 'Facebook'
+            },
+            { 
+              icon: <Twitter className="w-5 h-5" />,
+              color: 'hover:bg-blue-400', 
+              label: 'Twitter'
+            },
+            { 
+              icon: <Instagram className="w-5 h-5" />,
+              color: 'hover:bg-pink-600',
+              label: 'Instagram'
+            },
+            { 
+              icon: <Youtube className="w-5 h-5" />,
+              color: 'hover:bg-red-600',
+              label: 'YouTube'
+            }
+          ].map((social, index) => (
+            <a 
+              key={index}
+              href="#" 
+              className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 ${social.color} hover:scale-110`}
+              aria-label={social.label}
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
+
+        {/* Copyright */}
+        <div className="text-center md:text-right">
+          <p className="text-gray-400 text-sm flex items-center justify-center md:justify-end">
+            Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by FSNL Tennis
+          </p>
+          <p className="text-gray-400 text-sm mt-1">
+            © 2025 FSNL - KONOIKE Invitational Tennis Tournament
+          </p>
+          <p className="text-gray-500 text-xs mt-1">
+            Organized by DDBTA – Smriti Nagar Tennis Academy, Bhilai
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 };
 
 export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// components/Home.jsx
-
-
-// import React from "react";
-// import back from "../assets/foot2.jpg"; // Adjust path as needed
-// import { Play, Trophy, Users, Zap, ArrowRight, Star,Shield } from "lucide-react";
-
-// const Home = () => {
-//   return (
-//     <>
-//       <section className="w-full min-h-screen relative">
-//   <div 
-//     className="w-full min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed bg-no-repeat relative overflow-hidden"
-//     style={{
-//       backgroundImage: `url(${back})`
-//     }}
-//   >
-//     {/* Enhanced Multi-layer Overlay */}
-//     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/60 to-black/90"></div>
-    
-//     {/* Animated Gradient Overlay */}
-//     <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-transparent to-purple-600/20 animate-pulse"></div>
-    
-//     {/* Subtle Pattern Overlay */}
-//     <div 
-//       className="absolute inset-0 opacity-10"
-//       style={{
-//         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-//       }}
-//     ></div>
-
-//     {/* Floating Particles Effect */}
-//     <div className="absolute inset-0 overflow-hidden">
-//       {[...Array(20)].map((_, i) => (
-//         <div
-//           key={i}
-//           className="absolute w-2 h-2 bg-blue-400 rounded-full opacity-30 animate-float"
-//           style={{
-//             left: `${Math.random() * 100}%`,
-//             top: `${Math.random() * 100}%`,
-//             animationDelay: `${Math.random() * 5}s`,
-//             animationDuration: `${15 + Math.random() * 10}s`
-//           }}
-//         ></div>
-//       ))}
-//     </div>
-
-//     {/* Main Content Container */}
-//     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center relative z-10 py-20">
-      
-//       {/* Premium Badge */}
-//       <div className="mb-6 flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg">
-//         <Trophy className="w-5 h-5 text-yellow-400" />
-//         <span className="text-sm font-semibold uppercase tracking-widest text-white drop-shadow-md">
-//           Season 2024 Championship
-//         </span>
-//         <Star className="w-4 h-4 text-yellow-400 fill-current" />
-//       </div>
-
-//       {/* Main Headline with Gradient Text */}
-//       <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-tight mb-6 drop-shadow-2xl">
-//         <span className="bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-//           BATTLEGROUND
-//         </span>
-//         <br />
-//         <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-pulse">
-//           BLITZ
-//         </span>
-//       </h1>
-
-//       {/* Subtitle with Enhanced Styling */}
-//       <p className="mt-6 text-xl sm:text-2xl md:text-3xl text-gray-200 font-light max-w-4xl drop-shadow-2xl leading-relaxed">
-//         Enter the arena where legends are forged. Dominate the competition, 
-//         <span className="text-blue-300 font-semibold"> showcase your skills</span>, and claim 
-//         <span className="text-yellow-300 font-semibold"> eternal glory</span>.
-//       </p>
-
-//       {/* Stats Section */}
-//       <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16">
-//         {[
-//           { icon: Users, number: "50K+", label: "Active Players" },
-//           { icon: Trophy, number: "$500K", label: "Prize Pool" },
-//           { icon: Zap, number: "24/7", label: "Live Matches" }
-//         ].map((stat, index) => (
-//           <div key={index} className="flex flex-col items-center">
-//             <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 flex items-center justify-center mb-3 shadow-lg">
-//               <stat.icon className="w-8 h-8 text-blue-400" />
-//             </div>
-//             <div className="text-2xl font-bold text-white drop-shadow-lg">{stat.number}</div>
-//             <div className="text-sm text-gray-300 font-medium uppercase tracking-widest">{stat.label}</div>
-//           </div>
-//         ))}
-//       </div>
-
-//       {/* Action Buttons */}
-//       <div className="mt-16 flex flex-col sm:flex-row gap-6 items-center">
-//         {/* Primary CTA */}
-//         <button className="group relative px-12 py-5 rounded-2xl text-lg font-bold text-white 
-//           bg-gradient-to-r from-blue-600 to-purple-600 
-//           hover:from-blue-700 hover:to-purple-700 
-//           shadow-2xl shadow-blue-500/30 hover:shadow-3xl hover:shadow-purple-500/40
-//           transition-all duration-300 ease-out transform hover:scale-105 
-//           focus:outline-none focus:ring-4 focus:ring-blue-500/50
-//           border border-white/20 overflow-hidden">
-          
-//           {/* Shine effect */}
-//           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-          
-//           <span className="flex items-center gap-3 relative z-10">
-//             Register Now 
-//             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-//           </span>
-//         </button>
-
-//         {/* Secondary CTA */}
-//         <button className="group flex items-center gap-3 px-8 py-5 rounded-2xl text-lg font-semibold 
-//           text-white bg-white/10 backdrop-blur-lg border border-white/20 
-//           hover:bg-white/20 hover:border-white/30 
-//           transition-all duration-300 ease-out transform hover:scale-105 
-//           shadow-lg hover:shadow-xl">
-//           <Play className="w-5 h-5" />
-//           Watch Trailer
-//         </button>
-//       </div>
-//     </div>
-//   </div>
-
-//   {/* Additional Sections for Better Scrolling Experience */}
-  
-//   {/* Features Section */}
-//   <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black py-20 px-4">
-//     <div className="max-w-7xl mx-auto">
-//       <div className="text-center mb-16">
-//         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-//           Why Choose <span className="text-blue-400">Battleground Blitz</span>?
-//         </h2>
-//         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-//           Experience the ultimate gaming platform with cutting-edge features designed for champions.
-//         </p>
-//       </div>
-
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//         {[
-//           {
-//             icon: Trophy,
-//             title: "Massive Prize Pools",
-//             description: "Compete for life-changing rewards in our weekly tournaments with guaranteed prize money."
-//           },
-//           {
-//             icon: Users,
-//             title: "Global Community",
-//             description: "Join thousands of players worldwide and make your mark in the esports arena."
-//           },
-//           {
-//             icon: Zap,
-//             title: "Instant Matchmaking",
-//             description: "Get into action within seconds with our advanced matchmaking system."
-//           },
-//           {
-//             icon: Star,
-//             title: "Pro Ranking System",
-//             description: "Climb the leaderboards and prove your skills against the best players."
-//           },
-//           {
-//             icon: Play,
-//             title: "Live Streaming",
-//             description: "Stream your gameplay to millions of fans and build your personal brand."
-//           },
-//           {
-//             icon: Shield,
-//             title: "Fair Play Guaranteed",
-//             description: "Advanced anti-cheat systems ensure a level playing field for all competitors."
-//           }
-//         ].map((feature, index) => (
-//           <div key={index} className="group p-8 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:transform hover:scale-105">
-//             <div className="w-16 h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-6 group-hover:bg-blue-500/30 transition-colors">
-//               <feature.icon className="w-8 h-8 text-blue-400" />
-//             </div>
-//             <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
-//             <p className="text-gray-300 leading-relaxed">{feature.description}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   </div>
-
-//   {/* Tournament Schedule Section */}
-//   <div className="min-h-screen bg-gradient-to-br from-blue-900/20 to-purple-900/20 py-20 px-4">
-//     <div className="max-w-7xl mx-auto">
-//       <div className="text-center mb-16">
-//         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-//           Upcoming <span className="text-yellow-400">Tournaments</span>
-//         </h2>
-//         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-//           Don't miss your chance to compete in these epic battles. Register now and secure your spot!
-//         </p>
-//       </div>
-
-//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-//         {[
-//           {
-//             name: "Championship Finals",
-//             prize: "$250,000",
-//             date: "December 15, 2024",
-//             participants: "512 Teams",
-//             status: "Registration Open"
-//           },
-//           {
-//             name: "Pro League Season 8",
-//             prize: "$100,000",
-//             date: "January 5, 2025",
-//             participants: "256 Teams",
-//             status: "Coming Soon"
-//           },
-//           {
-//             name: "Weekly Showdown",
-//             prize: "$25,000",
-//             date: "Every Saturday",
-//             participants: "128 Teams",
-//             status: "Ongoing"
-//           },
-//           {
-//             name: "Rookie Tournament",
-//             prize: "$50,000",
-//             date: "November 30, 2024",
-//             participants: "1024 Teams",
-//             status: "Registration Open"
-//           }
-//         ].map((tournament, index) => (
-//           <div key={index} className="p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 hover:border-yellow-400/30 transition-all duration-300">
-//             <div className="flex justify-between items-start mb-4">
-//               <h3 className="text-2xl font-bold text-white">{tournament.name}</h3>
-//               <span className="px-4 py-2 rounded-full bg-green-500/20 text-green-400 text-sm font-semibold">
-//                 {tournament.status}
-//               </span>
-//             </div>
-//             <div className="space-y-3">
-//               <div className="flex justify-between">
-//                 <span className="text-gray-300">Prize Pool</span>
-//                 <span className="text-yellow-400 font-bold text-lg">{tournament.prize}</span>
-//               </div>
-//               <div className="flex justify-between">
-//                 <span className="text-gray-300">Date</span>
-//                 <span className="text-white font-semibold">{tournament.date}</span>
-//               </div>
-//               <div className="flex justify-between">
-//                 <span className="text-gray-300">Participants</span>
-//                 <span className="text-blue-400 font-semibold">{tournament.participants}</span>
-//               </div>
-//             </div>
-//             <button className="w-full mt-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
-//               Register Now
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   </div>
-
-//   {/* CSS for floating animation */}
-//   <style jsx>{`
-//     @keyframes float {
-//       0%, 100% { transform: translateY(0) rotate(0deg); }
-//       50% { transform: translateY(-20px) rotate(180deg); }
-//     }
-//     .animate-float {
-//       animation: float linear infinite;
-//     }
-//   `}</style>
-// </section>
-//     </>
-//   );
-// };
-
-// export default Home;
