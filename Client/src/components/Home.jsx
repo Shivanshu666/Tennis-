@@ -162,10 +162,10 @@ const toggleMobileMenu = () => {
         </div>
         <div className="flex flex-col">
           <span className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            FSNL Tennis
+            THE FSNL-KONOIKE
           </span>
           <span className="text-xs text-gray-500 -mt-1 hidden sm:block font-medium">
-            Professional Tournaments
+           Tennis Tournaments 2025
           </span>
         </div>
       </div>
@@ -375,7 +375,7 @@ const toggleMobileMenu = () => {
 
     {/* Subtitle */}
     <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-blue-200 mb-6 lg:mb-8">
-      Baseline of Hope
+      "Baseline of Hope"
     </h2>
 
     {/* Date and Location */}
@@ -436,9 +436,8 @@ const toggleMobileMenu = () => {
 
  {/* Description */}
           <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-8 lg:mb-12 px-4">
-            Join the most prestigious amateur tennis tournament in Bhilai. 
-            Showcase your skills, compete with the best, and experience 
-            world-class facilities in this premier sporting event.
+            Join the most prestigious  tennis tournament in Bhilai. 
+            
           </p>
     {/* Action Buttons with Mobile Entry Fee Card */}
     <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-12 lg:mb-16">
@@ -502,128 +501,92 @@ const toggleMobileMenu = () => {
             CASH PRIZE UPTO 1.5 LAKHS
           </h3>
           <p className="text-yellow-100 text-lg sm:text-xl font-semibold">
-            Plus Gifts, T-shirt, Cap & Certificates for all participants
+            Plus Gifts, Participation ,T-shirt, Cap , Trophies & Certificates for all participants
           </p>
         </div>
       </div>
     </div>
 
     {/* Categories Grid */}
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 lg:mb-16">
-      {/* Red Series */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-3 h-8 bg-red-500 rounded-full"></div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Tiny Todds (Red Series)</h3>
-        </div>
-        <div className="flex items-center space-x-2 mb-4">
-          <i className="fas fa-child text-red-500 text-lg"></i>
-          <span className="text-lg font-semibold text-gray-700">Under 8</span>
-        </div>
-        <p className="text-gray-600 mb-4">Boys & Girls combined category for our youngest champions</p>
-        <div className="bg-red-50 rounded-lg p-3">
-          <div className="flex items-center space-x-2 text-red-700">
-            <i className="fas fa-tennis-ball text-red-500"></i>
-            <span className="font-medium">Red Ball Series - Perfect for beginners</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Orange Series */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-orange-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-3 h-8 bg-orange-500 rounded-full"></div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Next Generation (Orange Series)</h3>
-        </div>
-        <div className="flex items-center space-x-2 mb-4">
-          <i className="fas fa-running text-orange-500 text-lg"></i>
-          <span className="text-lg font-semibold text-gray-700">Under 10</span>
-        </div>
-        <p className="text-gray-600 mb-4">Boys & Girls developing their skills in competitive environment</p>
-        <div className="bg-orange-50 rounded-lg p-3">
-          <div className="flex items-center space-x-2 text-orange-700">
-            <i className="fas fa-tennis-ball text-orange-500"></i>
-            <span className="font-medium">Orange Ball Series - Intermediate level</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Green Series */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-3 h-8 bg-green-500 rounded-full"></div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Green Arrows (Green Series)</h3>
-        </div>
-        <div className="flex items-center space-x-2 mb-4">
-          <i className="fas fa-bullseye text-green-500 text-lg"></i>
-          <span className="text-lg font-semibold text-gray-700">Under 12</span>
-        </div>
-        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-        <div className="bg-green-50 rounded-lg p-3">
-          <div className="flex items-center space-x-2 text-green-700">
-            <i className="fas fa-tennis-ball text-green-500"></i>
-            <span className="font-medium">Green Ball Series - Advanced junior level</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Yellow Series - Junior Performance */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-3 h-8 bg-yellow-500 rounded-full"></div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Junior Performance (Yellow Series)</h3>
-        </div>
-        <div className="flex items-center space-x-2 mb-4">
-          <i className="fas fa-chart-line text-yellow-500 text-lg"></i>
-          <span className="text-lg font-semibold text-gray-700">Under 14</span>
-        </div>
-        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-        <div className="bg-yellow-50 rounded-lg p-3">
-          <div className="flex items-center space-x-2 text-yellow-700">
-            <i className="fas fa-tennis-ball text-yellow-500"></i>
-            <span className="font-medium">Yellow Ball Series - Standard competition balls</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Yellow Series - Elite */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-3 h-8 bg-yellow-600 rounded-full"></div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Elite (Yellow Series)</h3>
-        </div>
-        <div className="flex items-center space-x-2 mb-4">
-          <i className="fas fa-crown text-yellow-600 text-lg"></i>
-          <span className="text-lg font-semibold text-gray-700">Under 16</span>
-        </div>
-        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-        <div className="bg-yellow-50 rounded-lg p-3">
-          <div className="flex items-center space-x-2 text-yellow-700">
-            <i className="fas fa-medal text-yellow-600"></i>
-            <span className="font-medium">Top-tier junior competition</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Yellow Series - Challengers */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-3 h-8 bg-yellow-700 rounded-full"></div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Challengers (Yellow Series)</h3>
-        </div>
-        <div className="flex items-center space-x-2 mb-4">
-          <i className="fas fa-fire text-yellow-700 text-lg"></i>
-          <span className="text-lg font-semibold text-gray-700">Under 18</span>
-        </div>
-        <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-        <div className="bg-yellow-50 rounded-lg p-3">
-          <div className="flex items-center space-x-2 text-yellow-700">
-            <i className="fas fa-star text-yellow-700"></i>
-            <span className="font-medium">Elite senior junior category</span>
-          </div>
-        </div>
-      </div>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 lg:mb-16">
+  {/* Red Series */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className="flex items-center space-x-3 mb-4">
+      <div className="w-3 h-8 bg-red-500 rounded-full"></div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Tiny Todds (Red Series)</h3>
     </div>
+    <div className="flex items-center space-x-2 mb-4">
+      <i className="fas fa-child text-red-500 text-lg"></i>
+      <span className="text-lg font-semibold text-gray-700">Under 8</span>
+    </div>
+    <p className="text-gray-600 mb-4">Boys & Girls combined category for our youngest champions</p>
+  </div>
+
+  {/* Orange Series */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-orange-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className="flex items-center space-x-3 mb-4">
+      <div className="w-3 h-8 bg-orange-500 rounded-full"></div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Next Generation (Orange Series)</h3>
+    </div>
+    <div className="flex items-center space-x-2 mb-4">
+      <i className="fas fa-running text-orange-500 text-lg"></i>
+      <span className="text-lg font-semibold text-gray-700">Under 10</span>
+    </div>
+    <p className="text-gray-600 mb-4">Boys & Girls developing their skills in competitive environment</p>
+  </div>
+
+  {/* Green Series */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className="flex items-center space-x-3 mb-4">
+      <div className="w-3 h-8 bg-green-500 rounded-full"></div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Green Arrows (Green Series)</h3>
+    </div>
+    <div className="flex items-center space-x-2 mb-4">
+      <i className="fas fa-bullseye text-green-500 text-lg"></i>
+      <span className="text-lg font-semibold text-gray-700">Under 12</span>
+    </div>
+    <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+  </div>
+
+  {/* Yellow Series - Junior Performance */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className="flex items-center space-x-3 mb-4">
+      <div className="w-3 h-8 bg-yellow-500 rounded-full"></div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Junior Performance (Yellow Series)</h3>
+    </div>
+    <div className="flex items-center space-x-2 mb-4">
+      <i className="fas fa-chart-line text-yellow-500 text-lg"></i>
+      <span className="text-lg font-semibold text-gray-700">Under 14</span>
+    </div>
+    <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+  </div>
+
+  {/* Yellow Series - Elite */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className="flex items-center space-x-3 mb-4">
+      <div className="w-3 h-8 bg-yellow-600 rounded-full"></div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Elite (Yellow Series)</h3>
+    </div>
+    <div className="flex items-center space-x-2 mb-4">
+      <i className="fas fa-crown text-yellow-600 text-lg"></i>
+      <span className="text-lg font-semibold text-gray-700">Under 16</span>
+    </div>
+    <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+  </div>
+
+  {/* Yellow Series - Challengers */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div className="flex items-center space-x-3 mb-4">
+      <div className="w-3 h-8 bg-yellow-700 rounded-full"></div>
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Challengers (Yellow Series)</h3>
+    </div>
+    <div className="flex items-center space-x-2 mb-4">
+      <i className="fas fa-fire text-yellow-700 text-lg"></i>
+      <span className="text-lg font-semibold text-gray-700">Under 18</span>
+    </div>
+    <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
+  </div>
+</div>
 
     {/* Additional Information */}
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
@@ -706,48 +669,106 @@ const toggleMobileMenu = () => {
   </div>
 </section>
         {/* About Section */}
-        <section id="about" className="py-20 md:py-16 lg:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                About the Tournament
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                The 5th annual FSNL-Konoike Invitational brings together the finest amateur tennis talent 
-                for a weekend of competitive excellence and sportsmanship.
-              </p>
-            </div>
+<section id="about" className="py-20 md:py-24 lg:py-28 bg-white">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+        About the Tournament
+      </h2>
+      <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {[
-                {
-                  icon: 'fas fa-trophy',
-                  title: 'Prestigious Event',
-                  description: 'Join the 5th annual tournament featuring top amateur talent from across Japan.'
-                },
-                {
-                  icon: 'fas fa-users',
-                  title: 'Community Focus',
-                  description: 'Building connections and promoting tennis at the grassroots level.'
-                },
-                {
-                  icon: 'fas fa-star',
-                  title: 'Elite Facilities',
-                  description: 'Play on professional-grade courts with official tournament equipment.'
-                }
-              ].map((item, index) => (
-                <div key={index} className="text-center p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                    <i className={`${item.icon} text-white text-lg sm:text-2xl`}></i>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.description}</p>
-                </div>
-              ))}
-            </div>
+    <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 md:p-12 border border-blue-100">
+      <div className="space-y-8">
+        {/* <!-- First Paragraph --> */}
+        <div className="flex items-start">
+          <div className="bg-blue-600 text-white p-3 rounded-lg mr-4 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m4 6 8 4 8-4"/>
+              <path d="m4 6 8 4 8-4"/>
+              <path d="m20 12-8 4-8-4"/>
+              <path d="m4 18 8 4 8-4"/>
+            </svg>
           </div>
-        </section>
+          <div>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              <span className="font-semibold text-gray-900">FSNL Private Limited (a Konoike Group Company)</span> is delighted to invite your son/daughter to attend The FSNL-KONOIKE TENNIS INVITATIONAL TOURNAMENT 2025 "Baseline of Hope" held on <span className="font-semibold">December 20th and 21st 2025</span> in conjunction with District Durg Bhilai Tennis Association – Smriti Nagar Tennis Academy, Bhilai at <span className="font-semibold">Bhilai Tennis Complex, Sector 7</span>.
+            </p>
+          </div>
+        </div>
 
+        {/* <!-- Second Paragraph --> */}
+        <div className="flex items-start">
+          <div className="bg-blue-600 text-white p-3 rounded-lg mr-4 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M2 12h20"/>
+              <path d="m2.5 2.5 19 19"/>
+              <path d="m21.5 2.5-19 19"/>
+            </svg>
+          </div>
+          <div>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              FSNL-KONOIKE is very excited to bring together all Tennis academies, Tennis Schools, Tennis Clubs from Chhattisgarh and further afield to compete against other player athletes in a high quality tennis competition.
+            </p>
+          </div>
+        </div>
+
+        {/* <!-- Third Paragraph --> */}
+        <div className="flex items-start">
+          <div className="bg-blue-600 text-white p-3 rounded-lg mr-4 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              The event will be organized with the expert collaboration of Team DDBTA – Smriti Nagar Tennis Academy, which will oversee all aspects of the tournament including planning, management, execution, closure, and technical coordination. The tournament aims to showcase talent, celebrate the culture of tennis, and bring tennis communities together under the theme: <span className="font-semibold text-blue-700 italic">"The Power of Sport to Fuel Social Development"</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* <!-- Tournament Highlights --> */}
+      <div className="mt-12 pt-8 border-t border-blue-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { 
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                      <line x1="16" x2="16" y1="2" y2="6"/>
+                      <line x1="8" x2="8" y1="2" y2="6"/>
+                      <line x1="3" x2="21" y1="10" y2="10"/>
+                    </svg>`,
+              text: 'Dec 20-21, 2025' 
+            },
+            { 
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>`,
+              text: 'Bhilai Tennis Complex' 
+            },
+            { 
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>`,
+              text: 'Open to All Academies' 
+            }
+          ].map((item, index) => (
+            <div key={index} className="text-center p-4 bg-white rounded-lg border border-blue-100">
+              <div className="flex justify-center mb-2 text-blue-600" dangerouslySetInnerHTML={{ __html: item.icon }}></div>
+              <p className="text-gray-700 font-medium">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
@@ -756,7 +777,7 @@ const toggleMobileMenu = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Our Sponsors
+                Our Sponsors / Partners
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 px-4">
                 Proudly supported by industry leaders
@@ -764,7 +785,7 @@ const toggleMobileMenu = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {['KONOIKE', 'FSNL', 'Tennis Pro', 'Sports Japan'].map((sponsor, index) => (
+              {['KONOIKE', 'FSNL', 'BSP', 'DDBTA'].map((sponsor, index) => (
                 <div key={index} className="bg-white border-2 border-gray-200 rounded-2xl p-6 sm:p-8 text-center hover:border-blue-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-white font-bold text-lg sm:text-xl">{sponsor.charAt(0)}</span>
