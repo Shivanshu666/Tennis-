@@ -1,5 +1,5 @@
 // components/Home.jsx
-import back from "../assets/home1.jpeg";
+import back from "../assets/home2.jpeg";
 import sport from "../assets/logo2.jpeg";
 import { useRef, useEffect, useState } from "react";
 import fsnl from "../assets/partner/FSNL.jpeg";
@@ -501,7 +501,7 @@ const Home = () => {
 
                 <div className="flex-1">
                   <div className="text-green-200 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
-                    CHAMPIONSHIP VENUE
+                     VENUE
                   </div>
                   <div className="text-white font-bold text-xl group-hover:text-green-100 transition-colors duration-300">
                     Bhilai Tennis Complex, Sector-7, Bhilai
