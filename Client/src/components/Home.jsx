@@ -1,5 +1,5 @@
 // components/Home.jsx
-import back from "../assets/home2.jpeg";
+import back from "../assets/home3.jpg";
 import sport from "../assets/logo2.jpeg";
 import { useRef, useEffect, useState } from "react";
 import fsnl from "../assets/partner/FSNL.jpeg";
@@ -458,7 +458,7 @@ const Home = () => {
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 lg:py-20">
           {/* Tournament Badge */}
 
-          <div>TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH</div>
+          <div>TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH</div>  // high light karo 
 
           <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-6 lg:mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
             <svg
