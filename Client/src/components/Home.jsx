@@ -547,7 +547,7 @@ const handleSubmit = async (e) => {
 
     {/* Highlight Line + Logo */}
     <div className="flex items-center justify-center gap-3 mb-4">
-      <span className="text-white font-bold text-sm md:text-base tracking-wide bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+      <span className="text-white font-bold text-sm md:text-base tracking-wide ">
         TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH
       </span>
     </div>
@@ -574,59 +574,55 @@ const handleSubmit = async (e) => {
       <img 
         src={sport} 
         alt="Logo" 
-        className="w-20 h-20 md:w-50 md:h-auto rounded-full shadow-2xl object-cover" 
+        className="w-20 h-20 md:w-60 md:h-auto rounded-full shadow-2xl object-cover" 
       />
     </div>
 
     {/* DATE + VENUE */}
-    <div className="max-w-md mx-auto mb-10">
-      <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 
-          hover:shadow-xl hover:scale-[1.015] transition-all duration-300 relative overflow-hidden group">
+<div className="w-full mx-auto mb-10">
+  <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 
+      hover:shadow-xl hover:scale-[1.015] transition-all duration-300 relative overflow-hidden group">
 
-        {/* Shine Animation */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
-            -skew-x-12 translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-[1200ms]">
-        </div>
+    {/* Shine Animation */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
+        -skew-x-12 translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-[1200ms]">
+    </div>
 
-        <div className="flex items-start gap-5 relative z-10">
+    {/* MAIN FLEX — side by side */}
+    <div className="flex items-center justify-between gap-6 relative z-10">
 
-   
-
-          <div className="flex-1 space-y-3">
-
-            {/* DATE */}
-            <div className="flex items-start gap-3">
-              <Calendar className="w-4 h-4 text-blue-300 mt-[2px]" />
-              <div>
-                <p className="text-blue-200 text-start text-[13px] font-bold uppercase tracking-widest">
-                  Tournament Date
-                </p>
-                <p className="text-white font-bold text-lg leading-tight">
-                  20 - 21 DEC 2025
-                </p>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="w-full h-[1px] bg-white/15"></div>
-
-            {/* VENUE */}
-            <div className="flex items-start gap-3">
-              <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
-              <div>
-                <p className="text-green-200 text-[13px] text-start font-bold uppercase tracking-widest">
-                  Venue
-                </p>
-                <p className="text-white font-bold text-base leading-tight">
-                  Bhilai Tennis Complex, Sector-7, Bhilai
-                </p>
-              </div>
-            </div>
-
-          </div>
+      {/* DATE */}
+      <div className="flex items-start gap-3">
+        <Calendar className="w-4 h-4 text-blue-300 mt-[2px]" />
+        <div>
+          <p className="text-blue-200 text-[15px] font-bold uppercase tracking-widest">
+            Tournament Date
+          </p>
+          <p className="text-white font-bold text-lg leading-tight">
+            20 - 21 Dec., 2025
+          </p>
         </div>
       </div>
+
+      {/* VERTICAL DIVIDER */}
+      <div className="w-[1px] h-12 bg-white/20"></div>
+
+      {/* VENUE */}
+      <div className="flex items-start gap-3">
+        <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
+        <div>
+          <p className="text-green-200 text-start text-[15px] font-bold uppercase tracking-widest">
+            Venue
+          </p>
+          <p className="text-white font-bold text-base leading-tight">
+            Bhilai Tennis Complex, Sector-7, Bhilai
+          </p>
+        </div>
+      </div>
+
     </div>
+  </div>
+</div>
 
     {/* Description */}
     <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10 px-4">
@@ -744,7 +740,7 @@ const handleSubmit = async (e) => {
                           className="w-full h-full object-contain"
                         />
                       </div>
-                      <h4 className="text-xl font-semibold text-blue-900 mb-2">
+                      <h4 className="text-xl font-bold text-blue-900 mb-2">
                         Respect
                       </h4>
                       <p className="text-black font-semibold">
@@ -761,7 +757,7 @@ const handleSubmit = async (e) => {
                           className="w-full h-full object-contain"
                         />
                       </div>
-                      <h4 className="text-xl font-semibold text-blue-900 mb-2">
+                      <h4 className="text-xl font-bold text-blue-900 mb-2">
                         Honesty & Integrity
                       </h4>
                       <p className="text-black font-semibold">
@@ -977,7 +973,7 @@ const handleSubmit = async (e) => {
 
         {/* Categories Section */}
         <section id="categories" className="py-18  min-h-screen md:py-16 lg:py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 Tournament Categories
@@ -991,90 +987,98 @@ const handleSubmit = async (e) => {
 
 
             {/* Categories Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 lg:mb-16">
-              {/* Red Series */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-3 h-8 bg-red-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Tiny Todds (Red Series)</h3>
-                </div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <i className="fas fa-child text-red-500 text-lg"></i>
-                  <span className="text-lg font-semibold text-gray-700">Under 8</span>
-                </div>
-                <p className="text-gray-600 mb-4">Boys & Girls Combined Draw</p>
-              </div>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-12 lg:mb-16">
+  {/* Red Series */}
+  <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg border-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-[300px] h-[200px] mx-auto">
+    <div className="text-center mb-2">
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">TINY TODDS</h3>
+      <div className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-base font-semibold inline-block">
+        Red Series
+      </div>
+    </div>
+    <div className="flex items-center space-x-2 mb-2 justify-center">
+      <i className="fas fa-child text-red-500 text-sm"></i>
+      <span className="text-base font-semibold text-gray-700">Under 8</span>
+    </div>
+    <p className="text-gray-600 text-center text-sm">Boys & Girls (Combined Draw)</p>
+  </div>
 
-              {/* Orange Series */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-orange-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-3 h-8 bg-orange-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Next Generation (Orange Series)</h3>
-                </div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <i className="fas fa-running text-orange-500 text-lg"></i>
-                  <span className="text-lg font-semibold text-gray-700">Under 10</span>
-                </div>
-                <p className="text-gray-600 mb-4">Boys & Girls Combined Draw</p>
-              </div>
+  {/* Orange Series */}
+  <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg border-4 border-orange-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-[300px] h-[200px] mx-auto">
+    <div className="text-center mb-2">
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">NEXT GENERATION</h3>
+      <div className="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-base font-semibold inline-block">
+        Orange Series
+      </div>
+    </div>
+    <div className="flex items-center space-x-2 mb-2 justify-center">
+      <i className="fas fa-running text-orange-500 text-sm"></i>
+      <span className="text-base font-semibold text-gray-700">Under 10</span>
+    </div>
+    <p className="text-gray-600 text-center text-sm">Boys & Girls (Combined Draw)</p>
+  </div>
 
-              {/* Green Series */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-3 h-8 bg-green-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Green Arrows (Green Series)</h3>
-                </div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <i className="fas fa-bullseye text-green-500 text-lg"></i>
-                  <span className="text-lg font-semibold text-gray-700">Under 12</span>
-                </div>
-                <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-              </div>
+  {/* Green Series */}
+  <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg border-4 border-green-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-[300px] h-[200px] mx-auto">
+    <div className="text-center mb-2">
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">GREEN ARROWS</h3>
+      <div className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-base font-semibold inline-block">
+        Green Series
+      </div>
+    </div>
+    <div className="flex items-center space-x-2 mb-2 justify-center">
+      <i className="fas fa-bullseye text-green-500 text-sm"></i>
+      <span className="text-base font-semibold text-gray-700">Under 12</span>
+    </div>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+  </div>
 
-              {/* Yellow Series - Junior Performance */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-3 h-8 bg-yellow-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Junior Performance (Yellow Series)</h3>
-                </div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <i className="fas fa-chart-line text-yellow-500 text-lg"></i>
-                  <span className="text-lg font-semibold text-gray-700">Under 14</span>
-                </div>
-                <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-              </div>
+  {/* Yellow Series - Junior Performance */}
+  <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg border-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-[300px] h-[200px] mx-auto">
+    <div className="text-center mb-2">
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">JUNIOR PERFORMANCE</h3>
+      <div className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-base font-semibold inline-block">
+        Yellow Series
+      </div>
+    </div>
+    <div className="flex items-center space-x-2 mb-2 justify-center">
+      <i className="fas fa-chart-line text-yellow-500 text-sm"></i>
+      <span className="text-base font-semibold text-gray-700">Under 14</span>
+    </div>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+  </div>
 
-              {/* Yellow Series - Elite */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-3 h-8 bg-yellow-600 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Elite (Yellow Series)</h3>
-                </div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <i className="fas fa-crown text-yellow-600 text-lg"></i>
-                  <span className="text-lg font-semibold text-gray-700">Under 16</span>
-                </div>
-                <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-              </div>
+  {/* Yellow Series - Elite */}
+  <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg border-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-[300px] h-[200px] mx-auto">
+    <div className="text-center mb-2">
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">ELITE</h3>
+      <div className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-base font-semibold inline-block">
+        Yellow Series
+      </div>
+    </div>
+    <div className="flex items-center space-x-2 mb-2 justify-center">
+      <i className="fas fa-crown text-yellow-600 text-sm"></i>
+      <span className="text-base font-semibold text-gray-700">Under 16</span>
+    </div>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+  </div>
 
-              {/* Yellow Series - Challengers */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-3 h-8 bg-yellow-700 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Challengers (Yellow Series)</h3>
-                </div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <i className="fas fa-fire text-yellow-700 text-lg"></i>
-                  <span className="text-lg font-semibold text-gray-700">Under 18</span>
-                </div>
-                <p className="text-gray-600 mb-4">Separate draws for Boys Singles & Girls Singles</p>
-              </div>
-            </div>
-
-
+  {/* Yellow Series - Challengers */}
+  <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg border-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-[300px] h-[200px] mx-auto">
+    <div className="text-center mb-2">
+      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">CHALLENGERS</h3>
+      <div className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-base font-semibold inline-block">
+        Yellow Series
+      </div>
+    </div>
+    <div className="flex items-center space-x-2 mb-2 justify-center">
+      <i className="fas fa-fire text-yellow-700 text-sm"></i>
+      <span className="text-base font-semibold text-gray-700">Under 18</span>
+    </div>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+  </div>
+</div>
           </div>
-
-          {/* Prize Pool Banner */}
 
         </section>
 
@@ -1278,7 +1282,7 @@ const handleSubmit = async (e) => {
   <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
       <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Get In <span className="text-blue-600">Touch</span>
+        Get In <span className="text-black-600">Touch</span>
       </h2>
       <p className="text-xl text-gray-600 max-w-2xl mx-auto">
         We’re here to assist you with any questions you may have.
