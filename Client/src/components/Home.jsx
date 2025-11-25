@@ -1,5 +1,5 @@
 // components/Home.jsx
-import back from "../assets/form2.jpg";
+import back from "../assets/home9.jpg";
 import sport from "../assets/logo2.jpeg";
 import { useRef, useEffect, useState } from "react";
 import fsnl from "../assets/partner/FSNL.jpeg";
@@ -475,14 +475,25 @@ const handleSubmit = async (e) => {
   className="relative min-h-screen flex items-center justify-center p-7 md:pt-8 overflow-hidden"
 >
   {/* Background with Darker Overlay */}
-  <div
+  {/* <div
     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{ backgroundImage: `url(${back})` }}
   >
     <div className="absolute inset-0 bg-blue-900/40 backdrop-blur-[1px]"></div>
-    {/* Additional Dark Overlay */}
+    
     <div className="absolute inset-0 bg-black/30"></div>
-  </div>
+  </div> */}
+  <div
+  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: `url(${back})` }}
+>
+  {/* Black Blur Layer */}
+  <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+
+  {/* Extra Black Overlay */}
+  <div className="absolute inset-0 bg-black/30"></div>
+</div>
+
 
   {/* --- ENTRY FEE (Desktop) --- */}
   <div
@@ -849,139 +860,120 @@ const handleSubmit = async (e) => {
             </div>
 
 <div className={`relative overflow-hidden rounded-2xl mt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-20 h-20 bg-yellow-300 rounded-full blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 bg-orange-400 rounded-full blur-2xl opacity-15 animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-amber-300 rounded-full blur-lg opacity-25"></div>
-      </div>
+  {/* Animated Background Elements */}
+  <div className="absolute inset-0">
+    <div className="absolute top-0 left-0 w-20 h-20 bg-blue-300 rounded-full blur-xl opacity-20 animate-pulse"></div>
+    <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-500 rounded-full blur-2xl opacity-15 animate-bounce"></div>
+    <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-400 rounded-full blur-lg opacity-25"></div>
+  </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className={`absolute w-2 h-2 bg-yellow-200 rounded-full opacity-40 animate-bounce`}
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + i * 10}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${3 + i * 0.5}s`
-            }}
-          ></div>
-        ))}
-      </div>
+  {/* Floating Particles */}
+  <div className="absolute inset-0 overflow-hidden">
+    {[...Array(5)].map((_, i) => (
+      <div
+        key={i}
+        className={`absolute w-2 h-2 bg-blue-200 rounded-full opacity-40 animate-bounce`}
+        style={{
+          left: `${20 + i * 15}%`,
+          top: `${30 + i * 10}%`,
+          animationDelay: `${i * 0.5}s`,
+          animationDuration: `${3 + i * 0.5}s`
+        }}
+      ></div>
+    ))}
+  </div>
 
-      <div className="
-        bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 
-        rounded-2xl p-6 sm:p-8 text-center 
-        shadow-2xl scale-[1.02] shadow-3xl
-        relative overflow-hidden
-        border-2 border-yellow-300
-        animate-pulse
-      ">
-        
-       
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-200/20 to-transparent -skew-x-12 animate-shine"></div>
+  <div className="
+    bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 
+    rounded-2xl p-6 sm:p-8 text-center 
+    shadow-2xl scale-[1.02] shadow-3xl
+    relative overflow-hidden
+    border-2 border-blue-300
+    animate-pulse
+  ">
+    
+   
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200/20 to-transparent -skew-x-12 animate-shine"></div>
 
-        <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-          
-         
-          <div className="relative">
-            <div className="bg-yellow-300/20 rounded-full p-4 sm:p-5 backdrop-blur-sm border-2 border-yellow-300/50 shadow-lg animate-bounce">
-              <div className="text-white text-3xl sm:text-4xl scale-110">
-                🏆
-              </div>
-            </div>
-            
-            <div className="absolute -top-2 -right-2 animate-spin">✨</div>
-            <div className="absolute -bottom-2 -left-2 animate-ping">⭐</div>
-          </div>
-
- 
-          <div className="space-y-3">
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-2 tracking-tight">
-              <span className="bg-gradient-to-r from-yellow-100 to-yellow-200 bg-clip-text text-transparent">
-                CASH PRIZE UPTO{' '}
-                <span className="relative inline-block">
-                  <span className="relative z-10 animate-pulse text-yellow-100">1.5 LAKHS</span>
-                  <span className="absolute inset-0 bg-yellow-300/30 blur-lg rounded-lg"></span>
-                </span>
-              </span>
-            </h3>
-            
-            <div className="space-y-2">
-              <p className="text-yellow-100 text-lg sm:text-xl font-semibold leading-relaxed">
-                <span className="bg-yellow-500/20 px-3 py-2 rounded-lg backdrop-blur-sm inline-block scale-105 border border-yellow-300/30">
-                  🎁 Plus Gifts • 👕 Participation T-shirt • 🧢 Cap
-                </span>
-              </p>
-              <p className="text-yellow-100 text-lg sm:text-xl font-semibold leading-relaxed">
-                <span className="bg-yellow-500/20 px-3 py-2 rounded-lg backdrop-blur-sm inline-block scale-105 border border-yellow-300/30">
-                  🏆 Trophies & 📜 Certificates for all participants
-                </span>
-              </p>
-            </div>
-
-            {/* CTA Button */}
-            {/* <div className="pt-4">
-              <button className="
-                bg-yellow-100 text-yellow-700 px-8 py-3 rounded-full 
-                font-bold text-lg shadow-2xl
-                scale-110
-                border-2 border-yellow-300
-                relative overflow-hidden
-                animate-pulse
-              ">
-                <span className="flex items-center space-x-2 relative z-10">
-                  <span className="scale-125">🎯</span>
-                  <span>Register Now!</span>
-                </span>
-        
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-200/20 to-transparent -skew-x-12 animate-shine"></div>
-              </button>
-            </div> */}
+    <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+      
+     
+      <div className="relative">
+        <div className="bg-blue-300/20 rounded-full p-4 sm:p-5 backdrop-blur-sm border-2 border-blue-300/50 shadow-lg animate-bounce">
+          <div className="text-white text-3xl sm:text-4xl scale-110">
+            🏆
           </div>
         </div>
-
-        {/* Bottom Border */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-300 to-transparent opacity-100 scale-x-100"></div>
+        
+        <div className="absolute -top-2 -right-2 animate-spin">✨</div>
+        <div className="absolute -bottom-2 -left-2 animate-ping">⭐</div>
       </div>
 
-      {/* Floating Confetti */}
-      <>
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className={`absolute w-3 h-3 bg-yellow-200 rounded-sm opacity-60 animate-bounce`}
-            style={{
-              left: `${10 + i * 10}%`,
-              top: `${10 + (i % 2) * 80}%`,
-              animationDelay: `${i * 0.2}s`,
-              animationDuration: `${2 + (i % 3)}s`
-            }}
-          ></div>
-        ))}
-      </>
 
-      {/* Custom Animation Styles */}
-      <style jsx>{`
-        @keyframes shine {
-          0% {
-            transform: translateX(-100%) skewX(-12deg);
-          }
-          100% {
-            transform: translateX(200%) skewX(-12deg);
-          }
-        }
-        .animate-shine {
-          animation: shine 3s ease-in-out infinite;
-        }
-        .shadow-3xl {
-          box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
-        }
-      `}</style>
+      <div className="space-y-3">
+        <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-2 tracking-tight">
+          <span className="bg-gradient-to-r from-blue-100 to-blue-200 bg-clip-text text-transparent">
+            CASH PRIZE UPTO{' '}
+            <span className="relative inline-block">
+              <span className="relative z-10 animate-pulse text-blue-100">1.5 LAKHS</span>
+              <span className="absolute inset-0 bg-blue-300/30 blur-lg rounded-lg"></span>
+            </span>
+          </span>
+        </h3>
+        
+        <div className="space-y-2">
+          <p className="text-blue-100 text-lg sm:text-xl font-semibold leading-relaxed">
+            <span className="bg-blue-500/20 px-3 py-2 rounded-lg backdrop-blur-sm inline-block scale-105 border border-blue-300/30">
+              🎁 Plus Gifts • 👕 Participation T-shirt • 🧢 Cap
+            </span>
+          </p>
+          <p className="text-blue-100 text-lg sm:text-xl font-semibold leading-relaxed">
+            <span className="bg-blue-500/20 px-3 py-2 rounded-lg backdrop-blur-sm inline-block scale-105 border border-blue-300/30">
+              🏆 Trophies & 📜 Certificates for all participants
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
+
+    {/* Bottom Border */}
+    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-100 scale-x-100"></div>
+  </div>
+
+  {/* Floating Confetti */}
+  <>
+    {[...Array(8)].map((_, i) => (
+      <div
+        key={i}
+        className={`absolute w-3 h-3 bg-blue-200 rounded-sm opacity-60 animate-bounce`}
+        style={{
+          left: `${10 + i * 10}%`,
+          top: `${10 + (i % 2) * 80}%`,
+          animationDelay: `${i * 0.2}s`,
+          animationDuration: `${2 + (i % 3)}s`
+        }}
+      ></div>
+    ))}
+  </>
+
+  {/* Custom Animation Styles */}
+  <style jsx>{`
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) skewX(-12deg);
+      }
+      100% {
+        transform: translateX(200%) skewX(-12deg);
+      }
+    }
+    .animate-shine {
+      animation: shine 3s ease-in-out infinite;
+    }
+    .shadow-3xl {
+      box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+    }
+  `}</style>
+</div>
             </div>
 
           
