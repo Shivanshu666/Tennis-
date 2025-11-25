@@ -1,5 +1,5 @@
 // components/Home.jsx
-import back from "../assets/home3.jpg";
+import back from "../assets/form2.jpg";
 import sport from "../assets/logo2.jpeg";
 import { useRef, useEffect, useState } from "react";
 import fsnl from "../assets/partner/FSNL.jpeg";
@@ -9,11 +9,13 @@ import Kaado from "../assets/partner/Kaadoo.png";
 import sportsmanshipIcon from "../assets/core/sport.jpeg";
 import respectIcon from "../assets/core/sport.jpeg";
 import integrityIcon from "../assets/core/sport.jpeg";
-import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin, Heart } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin, Heart,Calendar } from 'lucide-react';
 import gsap from "gsap";
 
 // Gallery 
 import gallery1 from "../assets/gallery/gallery1.jpeg"
+import gallery2 from "../assets/gallery/gallery2.jpeg"
+
 
 const Home = () => {
 
@@ -30,15 +32,34 @@ const Home = () => {
 
   const galleryImages = [
     { src: gallery1, title: "Championship Match", category: "Finals", height: "h-64" },
-    { src: gallery1, title: "Player Celebration", category: "Moments", height: "h-80" },
-    { src: gallery1, title: "Award Ceremony", category: "Ceremony", height: "h-72" },
-    { src: gallery1, title: "Intense Rally", category: "Action", height: "h-96" },
-    { src: gallery1, title: "Young Talents", category: "Juniors", height: "h-60" },
-    { src: gallery1, title: "Doubles Action", category: "Team Play", height: "h-84" },
-    { src: gallery1, title: "Victory Pose", category: "Celebration", height: "h-76" },
-    { src: gallery1, title: "Court Action", category: "Match", height: "h-68" }
+    { src: gallery2, title: "Player Celebration", category: "Moments", height: "h-80" },
   ];
+const handleNavClick = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const offsetTop = element.offsetTop - 80; // Adjust for header
+    
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth'
+    });
+  }
+};
 
+// Phir aapke navigation links mein use karein
+{['Home','About','Categories','Schedule','Sponsors','Gallery','Contact'].map((item) => (
+  <a
+    key={item}
+    href={`#${item.toLowerCase()}`}
+    onClick={(e) => {
+      e.preventDefault();
+      handleNavClick(item.toLowerCase());
+    }}
+    className="block text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+  >
+    {item}
+  </a>
+))}
 
   useEffect(() => {
     const sections = ['home', 'about', 'categories', 'schedule', 'sponsors', 'gallery' ,'contact'];
@@ -260,6 +281,55 @@ const Home = () => {
     },
   ];
 
+  // COntact Form 
+    const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus(null);
+
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/insertUser`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      setSubmitStatus({ type: 'success', message: data.msg });
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      setSubmitStatus({ type: 'error', message: data.msg });
+    }
+  } catch (error) {
+    setSubmitStatus({
+      type: 'error',
+      message: 'Network error. Please try again.',
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -267,7 +337,7 @@ const Home = () => {
      {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 shadow-2xl border-b border-gray-200/60">
         <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 lg:h-20">
+          <div className="flex justify-between items-center h-14 lg:h-18">
             {/* Logo with Premium Styling */}
             <div className="flex items-center space-x-3 lg:space-x-4">
               <div className="relative">
@@ -400,158 +470,199 @@ const Home = () => {
 
       {/* Hero Section */}
 
-      <section id="home" className="relative min-h-screen flex items-center justify-center p-7 md:pt-8 overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${back})`
-          }}
-        >
-          <div className="absolute inset-0 bg-blue-900/20 backdrop-blur-[1px]"></div>
+<section
+  id="home"
+  className="relative min-h-screen flex items-center justify-center p-7 md:pt-8 overflow-hidden"
+>
+  {/* Background with Darker Overlay */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url(${back})` }}
+  >
+    <div className="absolute inset-0 bg-blue-900/40 backdrop-blur-[1px]"></div>
+    {/* Additional Dark Overlay */}
+    <div className="absolute inset-0 bg-black/30"></div>
+  </div>
+
+  {/* --- ENTRY FEE (Desktop) --- */}
+  <div
+    ref={entryFeeRef}
+    className="hidden md:block absolute top-32 right-4 lg:right-8 z-20 cursor-pointer"
+  >
+    <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-5 shadow-2xl border-2 border-yellow-300 relative">
+      <div className="text-center">
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span className="text-white font-bold text-xl">₹100</span>
+        </div>
+        <div className="text-white text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-2 py-1">
+          Entry Fee
+        </div>
+      </div>
+
+      {/* Ping circle */}
+      <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+      <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
+    </div>
+  </div>
+
+  {/* --- CASH PRIZE (Desktop) --- */}
+  <div
+    ref={cashPrizeRef}
+    className="hidden md:block absolute top-40 left-4 lg:left-8 z-20 cursor-pointer"
+  >
+    <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-5 shadow-2xl border-2 border-green-300 relative">
+      <div className="text-center">
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+            />
+          </svg>
+          <span className="text-white font-bold text-xl">1.5 Lakhs</span>
+        </div>
+        <div className="text-yellow-100 text-xs font-semibold uppercase tracking-wide">
+          Cash Prize
+        </div>
+      </div>
+
+      <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+    </div>
+  </div>
+
+  {/* --- MAIN CONTENT --- */}
+  <div className="relative z-10 max-w-6xl mx-auto px-4 text-center py-14">
+
+    {/* Highlight Line + Logo */}
+    <div className="flex items-center justify-center gap-3 mb-4">
+      <span className="text-white font-bold text-sm md:text-base tracking-wide bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+        TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH
+      </span>
+    </div>
+
+    {/* Tournament Badge */}
+    <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
+      <svg
+        className="w-5 h-5 text-yellow-300 mr-3 animate-bounce"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      
+      <span className="text-white font-extrabold text-sm md:text-base uppercase tracking-widest">
+        THE FSNL - KONOIKE INVITATIONAL Tennis Tournament 2025
+        <br />
+        <span className="text-xs block mt-1">"Baseline of Hope"</span>
+      </span>
+    </div>
+
+    <div className="flex justify-center mb-6">
+      <img 
+        src={sport} 
+        alt="Logo" 
+        className="w-20 h-20 md:w-30 md:h-auto rounded-full shadow-2xl object-cover" 
+      />
+    </div>
+
+    {/* DATE + VENUE */}
+    <div className="max-w-xl mx-auto mb-10">
+      <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 
+          hover:shadow-xl hover:scale-[1.015] transition-all duration-300 relative overflow-hidden group">
+
+        {/* Shine Animation */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
+            -skew-x-12 translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-[1200ms]">
         </div>
 
-        {/* Floating Entry Fee Box - Desktop Only */}
-        <div
-          ref={entryFeeRef}
-          className="hidden md:block absolute top-30 right-4 lg:right-8 z-20 cursor-pointer"
-        >
-          <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 sm:p-5 shadow-2xl border-2 border-yellow-300">
-            <div className="text-center">
-              <div className="flex items-center justify-center space-x-2 mb-2">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="text-white font-bold text-lg sm:text-xl">₹100</span>
+        <div className="flex items-start gap-5 relative z-10">
+
+          {/* Big Icon Badge */}
+          <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center shadow-md 
+              group-hover:scale-110 transition-transform duration-300">
+            <Calendar className="w-6 h-6 text-white" />
+          </div>
+
+          <div className="flex-1 space-y-3">
+
+            {/* DATE */}
+            <div className="flex items-start gap-3">
+              <Calendar className="w-4 h-4 text-blue-300 mt-[2px]" />
+              <div>
+                <p className="text-blue-200 text-[10px] font-semibold uppercase tracking-widest">
+                  Tournament Date
+                </p>
+                <p className="text-white font-bold text-lg leading-tight">
+                  20 - 21 DEC 2025
+                </p>
               </div>
-              <div className="text-white text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-2 py-1 transition-colors">
-                Entry Fee
-              </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
             </div>
+
+            {/* Divider */}
+            <div className="w-full h-[1px] bg-white/15"></div>
+
+            {/* VENUE */}
+            <div className="flex items-start gap-3">
+              <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
+              <div>
+                <p className="text-green-200 text-[10px] font-semibold uppercase tracking-widest">
+                  Venue
+                </p>
+                <p className="text-white font-bold text-base leading-tight">
+                  Bhilai Tennis Complex, Sector-7, Bhilai
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
+      </div>
+    </div>
 
-        {/* Floating Cash Prize Box - Desktop Only */}
-        <div
-          ref={cashPrizeRef}
-          className="hidden md:block absolute top-42 left-4 lg:left-8 z-20 cursor-pointer"
-        >
-          <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-4 sm:p-5 shadow-2xl border-2 border-green-300">
-            <div className="text-center">
-              <div className="flex items-center justify-center space-x-2 mb-2">
-                <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                </svg>
-                <span className="text-white font-bold text-lg sm:text-xl">1.5 LAKHS</span>
-              </div>
-              <div className="text-yellow-100 text-xs font-semibold uppercase tracking-wide">
-                Cash Prize
-              </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-            </div>
-          </div>
-        </div>
+    {/* Description */}
+    <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10 px-4">
+      Join one of the biggest tennis tournaments of Bhilai and compete at the highest level.
+    </p>
 
-        {/* Main Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 lg:py-20">
-          {/* Tournament Badge */}
-
-          <div>TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH</div>  // high light karo 
-
-          <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-6 lg:mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
-            <svg
-              className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-300 mr-3 animate-bounce"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
+      {/* Mobile Entry Fee Card */}
+      <div className="md:hidden bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-3 shadow-xl border-2 border-yellow-300 animate-pulse">
+        <div className="text-center">
+          <div className="flex items-center justify-center space-x-2">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span className="text-white font-extrabold text-xs sm:text-sm uppercase tracking-widest">
-              THE FSNL - KONOIKE INVITATIONAL Tennis Tournament  2025 <br /> <span className="mt-1">"Baseline of Hope"</span>
-            </span>
+            <span className="text-white font-bold text-base">Only ₹100 Entry Fee</span>
           </div>
-
-          {/* Date and Location */}
-          <div className="flex flex-col lg:flex-row justify-center items-stretch gap-4 mb-8 lg:mb-12 max-w-2xl mx-auto">
-            {/* Date Card */}
-            <div className="flex-1 bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm border-l-4 border-blue-400 rounded-r-xl p-4 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              <div className="flex items-center space-x-3 relative z-10">
-                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 shadow-lg">
-                  <svg
-                    className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <div className="text-blue-200 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
-                    TOURNAMENT DATE
-                  </div>
-                  <div className="text-white font-bold text-xl group-hover:text-blue-100 transition-colors duration-300">
-                    20 - 21 DEC 2025
-                  </div>
-                </div>
-
-                <div className="flex-1">
-                  <div className="text-green-200 text-sm font-semibold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
-                     VENUE
-                  </div>
-                  <div className="text-white font-bold text-xl group-hover:text-green-100 transition-colors duration-300">
-                    Bhilai Tennis Complex, Sector-7, Bhilai
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Description */}
-          <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-8 lg:mb-12 px-4">
-            Join the one of the biggest tennis tournament of bhilai.
-
-          </p>
-          {/* Action Buttons with Mobile Entry Fee Card */}
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-12 lg:mb-16">
-            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
-              {/* Mobile Only Entry Fee Card - Register button ke upar */}
-              <div className="md:hidden bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-3 shadow-lg border-2 border-yellow-300 animate-pulse">
-                <div className="text-center">
-                  <div className="flex items-center justify-center space-x-2">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-white font-bold text-base">Only ₹100 Entry Fee</span>
-                  </div>
-                  <div className="text-yellow-100 text-xs font-semibold uppercase mt-1">
-                    Register Now!
-                  </div>
-                </div>
-              </div>
-
-              <button className="group w-full sm:w-auto px-6 py-3 lg:px-8 lg:py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 shadow-2xl hover:shadow-3xl flex items-center justify-center space-x-2 lg:space-x-3">
-                <i className="fas fa-user-plus group-hover:scale-110 transition-transform duration-300 text-sm lg:text-base"></i>
-                <span className="text-sm lg:text-base">Register Now & Claim Your Spot</span>
-              </button>
-            </div>
-          </div>
-
-
+          <div className="text-yellow-100 text-xs font-semibold uppercase mt-1">Register Now!</div>
         </div>
+      </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="animate-bounce">
-            <i className="fas fa-chevron-down text-white/60 text-xl sm:text-2xl"></i>
-          </div>
-        </div>
-      </section>
+      {/* Register Button with Form Link */}
+      <button 
+        onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform?pli=1&fbzx=8530774600493220154', '_blank')}
+        className="group px-8 py-4 bg-blue-600 hover:cursor-pointer text-white font-semibold rounded-xl hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300 shadow-2xl flex items-center gap-3"
+      >
+        <i className="fas fa-user-plus group-hover:scale-110 transition-transform"></i>
+        <span>Register Now & Claim Your Spot</span>
+      </button>
+    </div>
+
+  </div>
+
+</section>
 
       {/* Additional Sections */}
       <div className="bg-white">
@@ -1032,7 +1143,7 @@ const Home = () => {
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
       {[
-        { name: 'KONOIKE', logo: konoike, link: 'https://www.konoike.co.jp/english/' },
+        { name: 'KONOIKE', logo: konoike, link: 'https://www.konoike.net/' },
         { name: 'FSNL', logo: fsnl, link: 'https://www.fsnl.co.in/' },
         { name: 'BSP', logo: sail, link: 'https://sail.co.in/' },
         { name: 'DDBTA', link: '#' },
@@ -1083,41 +1194,43 @@ const Home = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
-              onClick={() => openModal(image)}
-            >
-              {/* Image Container */}
-              <div className="relative overflow-hidden aspect-square">
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                />
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="font-bold text-lg mb-2">{image.title}</h3>
-                    <span className="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {image.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Hover Icon */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 border border-white/30">
-                    <i className="fas fa-expand text-white text-2xl"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+ <div className="flex flex-wrap justify-center gap-12">
+  {galleryImages.map((image, index) => (
+    <div
+      key={index}
+      className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer w-[400px]"
+      onClick={() => openModal(image)}
+    >
+      {/* Image Container */}
+      <div className="relative overflow-hidden aspect-square">
+        <img
+          src={image.src}
+          alt={image.title}
+          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+        />
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 className="font-bold text-lg mb-2">{image.title}</h3>
+            <span className="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              {image.category}
+            </span>
+          </div>
         </div>
+
+        {/* Hover Icon */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 border border-white/30">
+            <i className="fas fa-expand text-white text-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
       </section>
 
       {/* Modal for Image View */}
@@ -1174,187 +1287,334 @@ const Home = () => {
 
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 md:py-16 lg:py-20 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Contact Us
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 px-4">
-                Get in touch for more information about the tournament
-              </p>
-            </div>
+        <section id="contact" className="py-20 md:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Get In <span className="text-blue-600">Touch</span>
+      </h2>
+      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        Have questions about the tournament? We're here to help you with all your inquiries.
+      </p>
+      <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Tournament Director</h3>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      {/* Contact Information Card */}
+      <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+        <div className="flex items-center mb-8">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 className="text-2xl font-bold text-gray-900 ml-4">Tournament Directors</h3>
+        </div>
 
-                <div className="grid grid-cols-1 gap-4">
-                  {/* Rachna Sharma */}
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Rachna Sharma</p>
-                        <p className="font-medium text-gray-900">DDBTA-Smriti Nagar Tennis Academy, Bhilai</p>
-
-                        <p className="text-sm text-gray-600">9303537600</p>
-                      </div>
-                    </div>
-                  </div>
-
-
-                </div>
+        <div className="space-y-6">
+          {/* Rachna Sharma */}
+          <div className="group p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hover:border-blue-300 transition-all duration-300">
+            <div className="flex items-start space-x-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
               </div>
-
-              <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Contact</h3>
-                <form className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  <textarea
-                    placeholder="Your Message"
-                    rows="4"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  ></textarea>
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
-                  >
-                    Send Message
-                  </button>
-                </form>
+              <div className="flex-1">
+                <h4 className="text-lg font-bold text-gray-900 mb-1">Rachna Sharma</h4>
+                <p className="text-blue-600 font-semibold text-sm mb-2">Tournament Director</p>
+                <p className="text-gray-600 text-sm mb-3">DDBTA – Smriti Nagar Tennis Academy, Bhilai</p>
+                <div className="flex items-center space-x-2 text-gray-700">
+                  <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span className="font-medium">9303537600</span>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+
+          {/* Additional Contact Info */}
+          <div>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Email</p>
+                  <p className="font-semibold text-gray-900">fsnlkonoiketennis@gmail.com</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Form Card */}
+   <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+      <div className="flex items-center mb-8">
+        <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          </svg>
+        </div>
+        <h3 className="text-2xl font-bold text-gray-900 ml-4">Send Us a Message</h3>
+      </div>
+
+      {/* Status Messages */}
+      {submitStatus && (
+        <div className={`p-4 rounded-lg mb-6 ${
+          submitStatus.type === 'success' 
+            ? 'bg-green-50 border border-green-200 text-green-700' 
+            : 'bg-red-50 border border-red-200 text-red-700'
+        }`}>
+          <div className="flex items-center">
+            {submitStatus.type === 'success' ? (
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
+            )}
+            {submitStatus.message}
+          </div>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your full name"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white"
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Your Email *</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email address"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white"
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+        </div>
+        
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Your Message *</label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Tell us more about your inquiry..."
+            rows="5"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-gray-50 hover:bg-white resize-none"
+            required
+            disabled={isSubmitting}
+          ></textarea>
+        </div>
+        
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={`w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 ${
+            isSubmitting 
+              ? 'opacity-50 cursor-not-allowed' 
+              : 'hover:from-blue-700 hover:to-blue-800'
+          }`}
+        >
+          {isSubmitting ? (
+            <>
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span>Sending...</span>
+            </>
+          ) : (
+            <>
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+              <span>Send Message</span>
+            </>
+          )}
+        </button>
+      </form>
+    </div>
+    </div>
+
+    {/* Additional Info */}
+    <div className="mt-16 text-center">
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
+        <h3 className="text-2xl font-bold mb-4">Need Immediate Assistance?</h3>
+        <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+          For urgent tournament-related queries, feel free to call us directly. We're available to help you with registration, schedule, and any other concerns.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a 
+            href="tel:9303537600" 
+            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call Now: 9303537600
+          </a>
+          <a 
+            href="mailto:fsnlkonoiketennis@gmail.com" 
+            className="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Send Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </div>
 
 
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {/* Tournament Info */}
-            <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
-                <img
-                  src={sport}
-                  alt="FSNL Tennis Logo"
-                  className="w-10 h-10 object-cover rounded-full border-2 border-blue-400"
-                />
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  FSNL Tennis
-                </span>
-              </div>
-              <p className="text-gray-300 text-sm mb-4">
-                Professional Tennis Tournaments bringing together the finest amateur talent for competitive excellence.
-              </p>
-              <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm">Bhilai Tennis Complex, Sector-7, Bhilai</span>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div className="text-center">
-              <h4 className="text-lg font-semibold mb-4 text-blue-300">Quick Links</h4>
-              <div className="space-y-2">
-                {['Home', 'Categories', 'Sponsors', 'Contact'].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="block text-gray-300 hover:text-white transition-colors duration-200 text-sm"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact Info */}
-            <div className="text-center md:text-right">
-              <h4 className="text-lg font-semibold mb-4 text-blue-300">Contact Info</h4>
-              <div className="space-y-2 text-sm text-gray-300">
-                <div className="flex items-center justify-center md:justify-end space-x-2">
-                  <Phone className="w-4 h-4" />
-                  <span>6266970108</span>
-                </div>
-                <div className="flex items-center justify-center md:justify-end space-x-2">
-                  <Mail className="w-4 h-4" />
-                  <span>info@fsnltennis.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Media & Copyright */}
-          <div className="border-t border-gray-700 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              {/* Social Media Icons with Lucide */}
-              <div className="flex justify-center space-x-4">
-                {[
-                  {
-                    icon: <Facebook className="w-5 h-5" />,
-                    color: 'hover:bg-blue-600',
-                    label: 'Facebook'
-                  },
-                  {
-                    icon: <Twitter className="w-5 h-5" />,
-                    color: 'hover:bg-blue-400',
-                    label: 'Twitter'
-                  },
-                  {
-                    icon: <Instagram className="w-5 h-5" />,
-                    color: 'hover:bg-pink-600',
-                    label: 'Instagram'
-                  },
-                  {
-                    icon: <Youtube className="w-5 h-5" />,
-                    color: 'hover:bg-red-600',
-                    label: 'YouTube'
-                  }
-                ].map((social, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 ${social.color} hover:scale-110`}
-                    aria-label={social.label}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-
-              {/* Copyright */}
-              <div className="text-center md:text-right">
-                <p className="text-gray-400 text-sm flex items-center justify-center md:justify-end">
-                  Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by FSNL Tennis
-                </p>
-                <p className="text-gray-400 text-sm mt-1">
-                  © 2025 FSNL - KONOIKE Invitational Tennis Tournament
-                </p>
-                <p className="text-gray-500 text-xs mt-1">
-                  Organized by DDBTA – Smriti Nagar Tennis Academy, Bhilai
-                </p>
-              </div>
-            </div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      {/* Tournament Info */}
+      <div className="text-center md:text-left md:col-span-2">
+        <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
+          <img
+            src={sport}
+            alt="FSNL Tennis Logo"
+            className="w-12 h-12 object-cover rounded-full border-2 border-blue-400 shadow-lg"
+          />
+          <div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              FSNL-KONOIKE OPEN
+            </span>
+            <p className="text-gray-400 text-sm mt-1">"Baseline of Hope"</p>
           </div>
         </div>
-      </footer>
+        <p className="text-gray-300 mb-4 max-w-md text-sm leading-relaxed">
+          Join the premier tennis tournament in Bhilai featuring intense competition, 
+          sportsmanship, and unforgettable moments on the court.
+        </p>
+        <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
+          <MapPin className="w-4 h-4" />
+          <span className="text-sm">Bhilai Tennis Complex, Sector-7, Bhilai</span>
+        </div>
+      </div>
+
+      {/* Quick Links - Two Columns */}
+      <div className="text-center md:text-left">
+        <h4 className="text-lg font-semibold mb-4 text-blue-300">Quick Links</h4>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+          {['Home', 'About', 'Categories', 'Schedule', 'Sponsors', 'Gallery', 'Contact'].map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="block text-gray-300 hover:text-white transition-all duration-200 text-sm hover:translate-x-1 hover:underline"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Info */}
+      <div className="text-center md:text-left">
+        <h4 className="text-lg font-semibold mb-4 text-blue-300">Contact Info</h4>
+        <div className="space-y-3 text-sm text-gray-300">
+          <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
+            <Phone className="w-4 h-4" />
+            <span>9303537600</span>
+          </div>
+          <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
+            <Mail className="w-4 h-4" />
+            <span>fsnlkonoiketennis@gmail.com</span>
+          </div>
+          <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
+            <Calendar className="w-4 h-4" />
+            <span>20-21 Dec 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Social Media & Copyright */}
+    <div className="border-t border-gray-700 pt-8">
+      <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        {/* Social Media Icons with Lucide */}
+        <div className="flex justify-center space-x-4">
+          {[
+            {
+              icon: <Facebook className="w-5 h-5" />,
+              color: 'hover:bg-blue-600',
+              label: 'Facebook'
+            },
+            {
+              icon: <Twitter className="w-5 h-5" />,
+              color: 'hover:bg-blue-400',
+              label: 'Twitter'
+            },
+            {
+              icon: <Instagram className="w-5 h-5" />,
+              color: 'hover:bg-gradient-to-r from-purple-600 to-pink-600',
+              label: 'Instagram'
+            },
+            {
+              icon: <Youtube className="w-5 h-5" />,
+              color: 'hover:bg-red-600',
+              label: 'YouTube'
+            }
+          ].map((social, index) => (
+            <a
+              key={index}
+              href="#"
+              className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 ${social.color} hover:scale-110 transform shadow-lg`}
+              aria-label={social.label}
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
+
+        {/* Copyright */}
+        <div className="text-center md:text-right">
+          <p className="text-gray-400 text-sm flex items-center justify-center md:justify-end">
+            Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by FSNL Tennis
+          </p>
+          <p className="text-gray-400 text-sm mt-1">
+            © 2025 FSNL - KONOIKE Invitational Tennis Tournament
+          </p>
+          <p className="text-gray-500 text-xs mt-1">
+            Organized by DDBTA – Smriti Nagar Tennis Academy, Bhilai
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 };
