@@ -546,14 +546,14 @@ const handleSubmit = async (e) => {
   <div className="relative z-10 max-w-6xl mx-auto px-4 text-center py-14">
 
     {/* Highlight Line + Logo */}
-    <div className="flex items-center justify-center gap-3 mb-4">
+    <div className="flex items-center justify-center gap-3 mb-5 mt-2">
       <span className="text-white font-bold text-sm md:text-base tracking-wide ">
         TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH
       </span>
     </div>
 
     {/* Tournament Badge */}
-    <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
+    {/* <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
       <svg
         className="w-5 h-5 text-yellow-300 mr-3 animate-bounce"
         fill="none"
@@ -568,13 +568,47 @@ const handleSubmit = async (e) => {
         <br />
         <span className="text-xs block mt-1">"Baseline of Hope"</span>
       </span>
+    </div> */}
+<div className="flex justify-center">
+      {/* Tailwind Utility Classes Used:
+        - Gradient: from-purple-700 to-blue-700
+        - Hover Effects: scale-105, shadow-2xl, transition-all, duration-500
+        - Inner Glow: absolute, inset-0, group-hover:opacity-60 (requires parent 'group')
+      */}
+      <div className="inline-flex items-center bg-gradient-to-r from-purple-700 to-blue-700 backdrop-blur-sm border border-purple-400 rounded-full px-8 py-4 mb-8 shadow-2xl shadow-purple-900/50 hover:scale-105 transition-all duration-500 relative group cursor-pointer overflow-hidden">
+        
+        {/* Subtle Background Glow Effect (The Attraction) */}
+        {/* Note: In React, inline styles use camelCase */}
+        <div 
+          className="absolute inset-0 rounded-full opacity-30 group-hover:opacity-60 transition-opacity duration-500" 
+          style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%)' }}
+        ></div>
+
+        {/* Clock/Time Icon */}
+        <svg
+          className="w-6 h-6 text-yellow-300 mr-4 animate-pulse drop-shadow-lg shadow-yellow-500/80 z-10" // z-10 ensures icon is above the glow
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+
+        {/* Text Content */}
+        <span className="text-white font-extrabold text-base md:text-lg uppercase tracking-widest z-10" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+          THE FSNL - KONOIKE INVITATIONAL **TENNIS TOURNAMENT 2025**
+          <br />
+          <span className="text-sm block mt-1 font-semibold text-yellow-300/90 italic">"Baseline of Hope"</span>
+        </span>
+      </div>
     </div>
 
-    <div className="flex justify-center mb-6">
+    
+    <div className="flex justify-center mb-12">
       <img 
         src={sport} 
         alt="Logo" 
-        className="w-20 h-20 md:w-60 md:h-auto rounded-full shadow-2xl object-cover" 
+        className="w-20 h-20 md:w-80 md:h-auto rounded-full shadow-2xl object-cover" 
       />
     </div>
 
@@ -630,7 +664,7 @@ const handleSubmit = async (e) => {
     </p>
 
     {/* Buttons */}
-    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
+    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 ">
       {/* Mobile Entry Fee Card */}
       <div className="md:hidden bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-3 shadow-xl border-2 border-yellow-300 animate-pulse">
         <div className="text-center">
@@ -707,6 +741,7 @@ const handleSubmit = async (e) => {
                 {/* Core Values Section */}
                 <div className="mt-12">
                   <h3 className="text-3xl font-bold text-black text-center mb-8">Our Core Values</h3>
+                  <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
                   <p className="text-gray-00 text-lg text-center mb-10">
                     This tournament is more than just competition — it is a celebration of <span className="text-black font-bold">Resilience, Leadership, Teamwork and Sportsmanship.</span>  These values shape not only the athletes we become, but the people we aspire to be.
                   </p>
@@ -802,7 +837,7 @@ const handleSubmit = async (e) => {
                   </svg>
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-2">Registration Deadline</h4>
-                <div className="text-2xl font-bold text-green-600 mb-2">15th Dec 2025</div>
+                <div className="text-2xl font-bold text-green-600 mb-2">15th Dec., 2025</div>
                 <p className="text-gray-600 mb-3">Submit via Google Form or Direct Message</p>
                 <div className="flex justify-center space-x-2 text-xs">
               <a 
@@ -1034,7 +1069,7 @@ const handleSubmit = async (e) => {
       <i className="fas fa-bullseye text-green-500 text-sm"></i>
       <span className="text-base font-semibold text-gray-700">Under 12</span>
     </div>
-    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys Singles & Girls Singles</p>
   </div>
 
   {/* Yellow Series - Junior Performance */}
@@ -1049,7 +1084,7 @@ const handleSubmit = async (e) => {
       <i className="fas fa-chart-line text-yellow-500 text-sm"></i>
       <span className="text-base font-semibold text-gray-700">Under 14</span>
     </div>
-    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys Singles & Girls Singles</p>
   </div>
 
   {/* Yellow Series - Elite */}
@@ -1064,7 +1099,7 @@ const handleSubmit = async (e) => {
       <i className="fas fa-crown text-yellow-600 text-sm"></i>
       <span className="text-base font-semibold text-gray-700">Under 16</span>
     </div>
-    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys Singles& Girls Singles</p>
   </div>
 
   {/* Yellow Series - Challengers */}
@@ -1079,7 +1114,7 @@ const handleSubmit = async (e) => {
       <i className="fas fa-fire text-yellow-700 text-sm"></i>
       <span className="text-base font-semibold text-gray-700">Under 18</span>
     </div>
-    <p className="text-gray-600 text-center text-sm">Separate draws for Boys & Girls</p>
+    <p className="text-gray-600 text-center text-sm">Separate draws for Boys Singles & Girls Singles</p>
   </div>
 </div>
           </div>
@@ -1183,7 +1218,7 @@ const handleSubmit = async (e) => {
             Tournament <span className="text-black">Gallery</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            Capturing the intensity, passion, and glory of every match
+            Capturing the intensity, passion, and glory of every event/match
           </p>
          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
         </div>
