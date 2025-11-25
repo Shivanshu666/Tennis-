@@ -16,7 +16,8 @@ import gsap from "gsap";
 // Gallery 
 import gallery1 from "../assets/gallery/gallery1.jpeg"
 import gallery2 from "../assets/gallery/gallery2.jpeg"
-
+import gallery3 from "../assets/gallery/gallery3.jpeg"
+import gallery4 from "../assets/gallery/gallery4.jpeg"
 const Home = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,17 +34,24 @@ const Home = () => {
   const galleryImages = [
     { src: gallery1, title: "Championship Match", category: "Finals", height: "h-64" },
     { src: gallery2, title: "Player Celebration", category: "Moments", height: "h-80" },
+        { src: gallery3, title: "Championship Match", category: "Finals", height: "h-64" },
+    { src: gallery4, title: "Player Celebration", category: "Moments", height: "h-80" },
   ];
-const handleNavClick = (sectionId) => {
+const handleNavClick = (e, sectionId) => {
+  e.preventDefault();
+
   const element = document.getElementById(sectionId);
   if (element) {
-    const offsetTop = element.offsetTop - 80; // Adjust for header
-    
+    const offsetTop = element.offsetTop - 80;
+
     window.scrollTo({
       top: offsetTop,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
   }
+
+  // 👉 Mobile menu close after clicking a link
+  setIsMobileMenuOpen(false);
 };
 
 // Phir aapke navigation links mein use karein
@@ -66,7 +74,7 @@ const handleNavClick = (sectionId) => {
 
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -70% 0px', // 20% from top, 70% from bottom
+      rootMargin: '-50% 0px -70% 0px', // 20% from top, 70% from bottom
       threshold: 0
     };
 
@@ -332,147 +340,125 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className=" bg-gray-50">
  
      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 shadow-2xl border-b border-gray-200/60">
-        <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-14 lg:h-18">
-            {/* Logo with Premium Styling */}
-            <div className="flex items-center space-x-3 lg:space-x-4">
-              <div className="relative">
-                <img
-                  src={sport}
-                  alt="FSNL Tennis Logo"
-                  className="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-blue-100 shadow-lg"
-                />
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
-              </div>
-              <div className="flex flex-col justify-center text-center">
-                <span className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  FSNL-KONOIKE <br/> <span className="text-center">OPEN</span>
-                </span>
-              </div>
-            </div>
+  <nav className="fixed top-0 left-0 right-0 w-full bg-white/95 backdrop-blur-xl z-50 shadow-2xl border-b border-gray-200/60">
+  <div className="max-w-full lg:max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-wrap lg:flex-nowrap justify-between items-center h-14 lg:h-18">
+      {/* Logo */}
+      <div className="flex items-center space-x-3 lg:space-x-4 flex-shrink-0">
+        <div className="relative">
+          <img
+            src={sport}
+            alt="FSNL Tennis Logo"
+            className="w-10 h-10 lg:w-12 lg:h-12 object-cover rounded-full border-2 border-blue-100 shadow-lg"
+          />
+          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+        </div>
+        <div className="flex flex-col justify-center text-center">
+          <span className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            FSNL-KONOIKE <br /> <span className="text-center">OPEN</span>
+          </span>
+        </div>
+      </div>
 
-            {/* Desktop Navigation Links with Improved Click Handling */}
-            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-              {['Home', 'About', 'Categories', 'Schedule', 'Sponsors', 'Gallery', 'Contact'].map((item) => {
-                const sectionId = item.toLowerCase();
-                const isActive = activeSection === sectionId;
+      {/* Desktop Navigation */}
+      <div className="hidden lg:flex items-center flex-1 justify-center space-x-1 lg:space-x-2">
+        {['Home','About','Categories','Schedule','Sponsors','Gallery','Contact'].map(item => {
+          const sectionId = item.toLowerCase();
+          const isActive = activeSection === sectionId;
+          return (
+            <a
+              key={item}
+              href={`#${sectionId}`}
+              onClick={(e) => handleNavClick(e, sectionId)}
+              className={`relative px-4 py-2 font-semibold transition-all duration-300 group ${
+                isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+              }`}
+            >
+              <span className="text-lg tracking-wide relative z-10">{item}</span>
+              <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ${isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'}`}></span>
+              {isActive && (
+                <span className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
+              )}
+            </a>
+          )
+        })}
+      </div>
 
-                return (
-                  <a
-                    key={item}
-                    href={`#${sectionId}`}
-                    onClick={(e) => handleNavClick(e, sectionId)}
-                    className={`relative px-4 py-2 font-semibold transition-all duration-300 group ${
-                      isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
-                    }`}
-                  >
-                    <span className="text-lg tracking-wide relative z-10">
-                      {item}
-                    </span>
-                    {/* Active Underline */}
-                    <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ${
-                      isActive ? 'w-3/4' : 'w-0 group-hover:w-3/4'
-                    }`}></span>
-                    {/* Active Dot */}
-                    {isActive && (
-                      <span className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-                    )}
-                  </a>
-                );
-              })}
-            </div>
-
-            {/* Desktop Contact Info */}
-            <div className="hidden lg:flex items-center space-x-3">
-              <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 px-4 py-2 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-blue-800 font-bold text-sm tracking-wide">9303537600</span>
-                  <span className="text-blue-600 text-xs">Call Now</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden">
-              <button
-                onClick={toggleMobileMenu}
-                className="p-3 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
-                  <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-                  }`}></span>
-                  <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${
-                    isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
-                  }`}></span>
-                  <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-                  }`}></span>
-                </div>
-              </button>
-            </div>
+      {/* Desktop Contact */}
+      <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
+        <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 px-4 py-2 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
           </div>
-
-          {/* Mobile Navigation Menu with Improved Click Handling */}
-          <div className={`lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/60 transition-all duration-500 ease-in-out overflow-hidden ${
-            isMobileMenuOpen ? 'max-h-96 py-4 opacity-100' : 'max-h-0 py-0 opacity-0'
-          }`}>
-            <div className="space-y-1 px-4">
-              {['Home', 'About', 'Categories', 'Schedule', 'Sponsors', 'Gallery', 'Contact'].map((item) => {
-                const sectionId = item.toLowerCase();
-                const isActive = activeSection === sectionId;
-
-                return (
-                  <a
-                    key={item}
-                    href={`#${sectionId}`}
-                    onClick={(e) => handleNavClick(e, sectionId)}
-                    className={`flex items-center space-x-3 py-3 px-4 rounded-xl font-semibold transition-all duration-300 group ${
-                      isActive
-                        ? 'text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-500'
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gradient-to-r from-blue-50 to-purple-50'
-                    }`}
-                  >
-                    {/* Active Dot */}
-                    <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      isActive ? 'bg-blue-500 scale-125' : 'bg-blue-500 opacity-0 group-hover:opacity-100'
-                    }`}></div>
-                    <span className="text-base flex-1">{item}</span>
-                    {/* Active Checkmark */}
-                    {isActive && (
-                      <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                    {/* Chevron for inactive items */}
-                    {!isActive && (
-                      <svg className="w-3 h-3 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    )}
-                  </a>
-                );
-              })}
-            </div>
+          <div className="flex flex-col">
+            <span className="text-blue-800 font-bold text-sm tracking-wide">9303537600</span>
+            <span className="text-blue-600 text-xs">Call Now</span>
           </div>
         </div>
-      </nav>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <div className="lg:hidden">
+        <button onClick={toggleMobileMenu} className="p-3 rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
+          <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
+            <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+            <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+            <span className={`block w-5 h-0.5 bg-gray-700 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile Menu */}
+    <div className={`lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/60 transition-all duration-500 ease-in-out overflow-hidden ${isMobileMenuOpen ? 'max-h-screen py-4 opacity-100' : 'max-h-0 py-0 opacity-0'}`}>
+      <div className="grid grid-cols-2 gap-2 px-4 overflow-y-auto max-h-[calc(100vh-4rem)]">
+        {['Home','About','Categories','Schedule','Sponsors','Gallery','Contact'].map(item => {
+          const sectionId = item.toLowerCase();
+          const isActive = activeSection === sectionId;
+          return (
+            <a
+              key={item}
+              href={`#${sectionId}`}
+              onClick={(e) => handleNavClick(e, sectionId)}
+              className={`flex items-center space-x-2 py-3 px-3 rounded-xl font-semibold transition-all duration-300 group ${
+                isActive
+                  ? 'text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-500'
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gradient-to-r from-blue-50 to-purple-50'
+              }`}
+            >
+              <div className={`w-2 h-2 rounded-full transition-all duration-300 ${isActive ? 'bg-blue-500 scale-125' : 'bg-blue-500 opacity-0 group-hover:opacity-100'}`}></div>
+              <span className="text-sm flex-1 text-center">{item}</span>
+              {isActive && (
+                <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              )}
+              {!isActive && (
+                <svg className="w-3 h-3 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              )}
+            </a>
+          )
+        })}
+      </div>
+    </div>
+  </div>
+</nav>
+
+
 
 
       {/* Hero Section */}
 
 <section
   id="home"
-  className="relative min-h-screen flex items-center justify-center p-7 md:pt-8 overflow-hidden"
+  className="relative min-h-screen flex items-center justify-center p-7 md:pt-9 overflow-hidden"
 >
  
   <div
@@ -490,7 +476,7 @@ const handleSubmit = async (e) => {
   {/* --- ENTRY FEE (Desktop) --- */}
 <div
   ref={entryFeeRef}
-  className="hidden md:block absolute top-32 right-4 lg:right-8 z-20 cursor-pointer"
+  className="hidden md:block absolute md:top-75 lg:top-32 right-4 lg:right-8 z-20 cursor-pointer"
 >
   {/* Standardized width (w-32) added for consistent sizing */}
   <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 shadow-2xl border-2 border-yellow-300 relative w-32">
@@ -520,7 +506,7 @@ const handleSubmit = async (e) => {
   {/* --- CASH PRIZE (Desktop) --- */}
 <div
   ref={cashPrizeRef}
-  className="hidden md:block absolute top-40 left-4 lg:left-8 z-20 cursor-pointer"
+  className="hidden md:block absolute md:top-80 lg:top-40 left-4 lg:left-8 z-20 cursor-pointer"
 >
   {/* Added h-24 to fix the height to match the Entry Fee box */}
   <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-4 shadow-2xl border-2 border-green-300 relative w-32 h-24 flex flex-col justify-center items-center">
@@ -677,10 +663,10 @@ const handleSubmit = async (e) => {
       <div className="bg-white py-20">
 
         {/* About Section */}
-        <section id="about" className=" py-20 bg-white">
+        <section id="about" className=" py-6 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl max-sm:text-2xl sm:text-4xl font-bold text-gray-900 mb-6">
                 About the Tournament
               </h2>
               <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
@@ -691,7 +677,7 @@ const handleSubmit = async (e) => {
                 {/* First Paragraph */}
                 <div className="flex items-start">
               <div className="text-left">
-  <p className="text-gray-700 text-lg mb-4 text-justify leading-relaxed">
+  <p className="text-gray-700 text-lg mb-4 max-sm:text-base text-justify leading-relaxed">
     <span className="text-gray-900">
       The <span className="text-black font-bold">FSNL–KONOIKE Invitational Tennis Tournament 2025</span> is
       scheduled to take place on <span className="text-black font-bold">20–21 December 2025</span>, in partnership
@@ -700,25 +686,25 @@ const handleSubmit = async (e) => {
     </span>
   </p>
 
-  <p className="text-gray-700 text-lg mb-6 text-justify leading-relaxed">
+  <p className="text-gray-700 max-sm:text-base text-lg mb-6 text-justify leading-relaxed">
     <span className="font-semibold text-gray-900">
       This tournament aims to showcase emerging talent, celebrate the culture of tennis in the region, and unite
       tennis communities under the powerful theme:
     </span>
   </p>
 
-  <p className="text-blue-700 font-bold text-lg mb-4 text-left">
+  <p className="text-blue-700  font-bold text-lg mb-4 text-left">
     "The Power of Sport to Fuel Social Development."
   </p>
 
-  <p className="text-gray-900 text-lg mb-6 text-justify leading-relaxed">
+  <p className="text-gray-900 max-sm:text-base text-lg mb-6 text-justify leading-relaxed">
     FSNL–KONOIKE is proud to bring together <span className="text-black font-bold">tennis academies, tennis
     schools, and tennis clubs from across Chhattisgarh</span>, making this one of the largest academy and
     club-based tennis tournaments in the region. The tournament provides players with an excellent platform to
     challenge themselves and compete in a high-quality, professionally organized environment.
   </p>
 
-  <p className="text-gray-900 text-lg mb-4 text-justify leading-relaxed">
+  <p className="text-gray-900 max-sm:text-base text-lg mb-4 text-justify leading-relaxed">
     Beyond competition, our vision is to ensure that <span className="text-black font-bold">every player, parent,
     and coach serves as an ambassador</span> for their academy or club. Regardless of victory or defeat, we uphold
     the values of <span>respect, sportsmanship, and fair play</span>—qualities that define not just athletes, but
@@ -730,7 +716,7 @@ const handleSubmit = async (e) => {
 
                 {/* Core Values Section */}
                 <div className="mt-12">
-                  <h3 className="text-3xl font-bold text-black text-center mb-8">Our Core Values</h3>
+                  <h3 className="text-3xl font-bold text-black text-center max-sm:text-2xl  mb-8">Our Core Values</h3>
                   <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
                   <p className="text-gray-00 text-lg text-center mb-10">
                     This tournament is more than just competition — it is a celebration of <span className="text-black font-bold">Resilience, Leadership, Teamwork and Sportsmanship.</span>  These values shape not only the athletes we become, but the people we aspire to be.
@@ -800,83 +786,127 @@ const handleSubmit = async (e) => {
               </div>
 
                 {/* Additional Information */}
-            <div className="grid grid-cols-1 md:grid-cols-3 mt-16 gap-6 lg:gap-8">
-              {/* Entry Fees */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-blue-100 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Entry Fees</h4>
-                <div className="text-3xl font-bold text-blue-600 mb-2">₹100</div>
-                <p className="text-gray-600">Per Event</p>
-                <div className="mt-3 text-xs text-blue-500 font-medium flex items-center justify-center">
-                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                  Affordable Participation
-                </div>
-              </div>
+           <div className="grid md:grid-cols-1 lg:grid-cols-3 mt-16 gap-6 lg:gap-8">
+  
+  {/* Entry Fees */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-blue-100 
+                  text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
+                  group h-full flex flex-col justify-between">
+    
+    <div>
+      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full 
+                      flex items-center justify-center mx-auto mb-4 shadow-lg 
+                      group-hover:scale-110 transition-transform duration-300">
+        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
 
-              {/* Registration Deadline */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-green-100 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Registration Deadline</h4>
-                <div className="text-2xl font-bold text-green-600 mb-2">15th Dec., 2025</div>
-                <p className="text-gray-600 mb-3">Submit via Google Form or Direct Message</p>
-                <div className="flex justify-center space-x-2 text-xs">
-              <a 
-  href="https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform?pli=1&fbzx=8530774600493220154" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="inline-block"
->
-  <span className="bg-green-100 text-green-700 px-3 py-2 rounded-full flex items-center hover:bg-green-200 hover:text-green-800 transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-md">
-    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-    </svg>
-    Google Form
-  </span>
-</a>
-                  <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full flex items-center">
-                    <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                    Direct Message
-                  </span>
-                </div>
-              </div>
+      <h4 className="text-xl font-bold text-gray-900 mb-2">Entry Fees</h4>
+      <div className="text-3xl font-bold text-blue-600 mb-2">₹100</div>
+      <p className="text-gray-600">Per Event</p>
+    </div>
 
-              {/* Awards */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-purple-100 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Cash Prizes & Trophies</h4>
-                <div className="space-y-2 mb-3">
-                  <div className="flex items-center justify-center space-x-2 text-gray-700">
-                    <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                    </svg>
-                    <span>Winner & Finalist</span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2 text-gray-700">
-                    <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>3rd & 4th Place</span>
-                  </div>
-                </div>
-           
-              </div>
-            </div>
+    <div className="mt-4 text-xs text-blue-500 font-medium flex items-center justify-center">
+      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+      </svg>
+      Affordable Participation
+    </div>
+  </div>
+
+
+  {/* Registration Deadline */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-green-100 
+                  text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
+                  group h-full flex flex-col justify-between">
+
+    <div>
+      <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full 
+                      flex items-center justify-center mx-auto mb-4 shadow-lg 
+                      group-hover:scale-110 transition-transform duration-300">
+        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+      </div>
+
+      <h4 className="text-xl font-bold text-gray-900 mb-2">Registration Deadline</h4>
+      <div className="text-2xl font-bold text-green-600 mb-2">15th Dec., 2025</div>
+      <p className="text-gray-600 mb-3">Submit via Google Form or Direct Message</p>
+    </div>
+
+    <div className="flex justify-center space-x-2 text-xs mt-3">
+      {/* Google Form */}
+      <a 
+        href="https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform"
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        <span className="bg-green-100 text-green-700 px-3 py-2 rounded-full flex items-center 
+                        hover:bg-green-200 transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-md">
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Google Form
+        </span>
+      </a>
+
+      {/* DM */}
+      <span className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full flex items-center">
+        <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+        </svg>
+        Direct Message
+      </span>
+    </div>
+  </div>
+
+
+  {/* Awards */}
+  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-purple-100 
+                  text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
+                  group h-full flex flex-col justify-between">
+
+    <div>
+      <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full 
+                      flex items-center justify-center mx-auto mb-4 shadow-lg 
+                      group-hover:scale-110 transition-transform duration-300">
+        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+        </svg>
+      </div>
+
+      <h4 className="text-xl font-bold text-gray-900 mb-2">Cash Prizes & Trophies</h4>
+
+      <div className="space-y-2 mb-3">
+        <div className="flex items-center justify-center space-x-2 text-gray-700">
+          <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+          </svg>
+          <span>Winner & Finalist</span>
+        </div>
+
+        <div className="flex items-center justify-center space-x-2 text-gray-700">
+          <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>3rd & 4th Place</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
 
 <div className={`relative overflow-hidden rounded-2xl mt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
   {/* Animated Background Elements */}
@@ -1001,10 +1031,10 @@ const handleSubmit = async (e) => {
 
 
         {/* Categories Section */}
-        <section id="categories" className="py-18  min-h-screen md:py-16 lg:py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <section id="categories" className=" min-h-screen py-6 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center  mb-12 lg:mb-16">
+              <h2 className="text-2xl  sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 Tournament Categories
               </h2>
                 <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
@@ -1115,35 +1145,38 @@ const handleSubmit = async (e) => {
 
          <section
       id="schedule"
-      className="py-18 min-h-screen md:py-16 lg:py-20 bg-gradient-to-br from-blue-50 to-indigo-50"
+      className=" min-h-screen -py-10 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-50"
     >
       <div className="min-h-screen bg-gray-100 p-8">
         <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-8">
-          <h1 className="text-4xl font-bold text-center mb-6">
+          <h1 className="text-4xl max-sm:text-2xl  font-bold text-center mb-6">
             Tournament Schedule
           </h1>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
 
           {schedule.map((day, index) => (
-            <div key={index} className="mb-10">
-              <h2 className="text-xl font-semibold mb-4 border-b pb-2">
-                {day.date}
-              </h2>
+           <div key={index} className="mb-10 max-sm:mb-6">
+  <h2 className="text-xl font-semibold mb-4 border-b pb-2 max-sm:text-lg max-sm:mb-3">
+    {day.date}
+  </h2>
 
-              <div className="space-y-3">
-                {day.items.map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex justify-between items-start bg-gray-50 p-4 rounded-xl shadow-sm"
-                  >
-                    <span className="font-semibold w-32">{item.time}</span>
-                    <span className="w-full pl-4 text-gray-700">
-                      {item.event}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+  <div className="space-y-3 max-sm:space-y-2">
+    {day.items.map((item, i) => (
+      <div
+        key={i}
+        className="flex justify-between items-start bg-gray-50 p-4 rounded-xl shadow-sm max-sm:p-3 max-sm:rounded-lg"
+      >
+        <span className="font-semibold w-32 max-sm:w-24 max-sm:text-sm">
+          {item.time}
+        </span>
+        <span className="w-full pl-4 text-gray-700 max-sm:text-sm">
+          {item.event}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
+
           ))}
         </div>
       </div>
@@ -1151,17 +1184,17 @@ const handleSubmit = async (e) => {
 
 
         {/* Sponsors Section */}
-       <section id="sponsors" className="py-20 md:py-16 lg:py-20">
+       <section id="sponsors" className="py-6 md:py-20">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12 lg:mb-16">
-      <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold text-gray-900 mb-4">
-        <span className="text-5xl mt-9">Our Sponsors</span>
+    <div className="text-center  mb-12 lg:mb-16">
+      <h2 className="text-2xl  sm:text-3xl lg:text-2xl font-bold text-gray-900 mb-4">
+        <span className=" max-sm:text-2xl text-5xl mt-9">Our Sponsors</span>
       </h2>
       <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
       
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
+    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
       {[
         { name: 'KONOIKE', logo: konoike, link: 'https://www.konoike.net/en/' },
         { name: 'FSNL', logo: fsnl, link: 'https://www.fsnl.co.in/' },
@@ -1201,24 +1234,24 @@ const handleSubmit = async (e) => {
 
 
   {/* Gallery Section */}
-  <section id="gallery" className="max-w-[1400px] mx-auto py-20 px-4 sm:px-6 lg:px-8">
+  <section id="gallery" className="max-w-[1400px] mx-auto py-6 md:py-20">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl max-sm:text-2xl md:text-5xl font-bold text-gray-900 mb-4">
             Tournament <span className="text-black">Gallery</span>
           </h2>
          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-xl max-sm:text-lg text-gray-600 max-w-2xl mx-auto mb-3 md:mb-8">
             Capturing the intensity, passion, and glory of every event/match
           </p>
         </div>
 
         {/* Gallery Grid */}
- <div className="flex flex-wrap justify-center gap-12">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 justify-items-center">
   {galleryImages.map((image, index) => (
     <div
       key={index}
-      className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer w-[400px]"
+      className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer w-[320px]"
       onClick={() => openModal(image)}
     >
       {/* Image Container */}
@@ -1307,14 +1340,14 @@ const handleSubmit = async (e) => {
 
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 md:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <section id="contact" className="py-6 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
   <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+    <div className="text-center mb-6 md:mb-16">
+      <h2 className="text-4xl max-sm:text-2xl md:text-5xl font-bold text-gray-900 mb-4">
         Get In <span className="text-black-600">Touch</span>
       </h2>
-       <div className="w-20 h-1 bg-blue-600 mx-auto mt-6"></div>
-      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+       <div className="w-20 h-1 bg-blue-600 mx-auto mt-3 md:mt-6"></div>
+      <p className="text-xl  max-sm:text-base mt-6 text-gray-600 max-w-2xl mx-auto">
         We’re here to assist you with any questions you may have.
       </p>
     </div>

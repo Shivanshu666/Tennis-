@@ -5,10 +5,10 @@ import Home from './components/Home.jsx'
 const App = () => {
   return (
     <>
-    <div className="min-h-screen">
+ 
       {/* <Navbar/> */}
       <Home/>
-    </div>
+  
     </>
   )
 }
