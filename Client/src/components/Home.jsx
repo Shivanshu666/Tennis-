@@ -610,7 +610,7 @@ const handleSubmit = async (e) => {
             <div className="flex items-start gap-3">
               <Calendar className="w-4 h-4 text-blue-300 mt-[2px]" />
               <div>
-                <p className="text-blue-200 text-[10px] font-semibold uppercase tracking-widest">
+                <p className="text-blue-200 text-start text-[12px] font-semibold uppercase tracking-widest">
                   Tournament Date
                 </p>
                 <p className="text-white font-bold text-lg leading-tight">
@@ -626,7 +626,7 @@ const handleSubmit = async (e) => {
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
               <div>
-                <p className="text-green-200 text-[10px] font-semibold uppercase tracking-widest">
+                <p className="text-green-200 text-[12px] text-start font-semibold uppercase tracking-widest">
                   Venue
                 </p>
                 <p className="text-white font-bold text-base leading-tight">
