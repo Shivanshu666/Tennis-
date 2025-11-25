@@ -304,7 +304,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/insertUser`,
+      `${import.meta.env.VITE_API_URL}/api/insertUser`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
