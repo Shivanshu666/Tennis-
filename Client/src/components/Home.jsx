@@ -6,6 +6,7 @@ import fsnl from "../assets/partner/FSNL.jpeg";
 import konoike from "../assets/partner/konoke.png";
 import sail from "../assets/partner/sail.png";
 import Kaado from "../assets/partner/Kaadoo.png";
+import ddbta from "../assets/partner/DDBTA.png";
 import sportsmanshipIcon from "../assets/core/sportsmanship.png";
 import respectIcon from "../assets/core/respect.png";
 import integrityIcon from "../assets/core/honesty.png";
@@ -254,7 +255,7 @@ const handleNavClick = (sectionId) => {
             {
           time: "16:00-17:00",
           event:
-            "Master Class Tennis Clinic 'The Winning Mindset' by xxxxxxx",
+            "Master Class Tennis Clinic 'The Winning Mindset' by Vishnu Vardhan - Professional Tennis Player (an Olympian, Asian Games Medalist, Grand Slam & Davis Cup Player)",
         },
          {
           time: "17:00-17:30",
@@ -264,12 +265,12 @@ const handleNavClick = (sectionId) => {
          {
           time: "17:40-18:00",
           event:
-            "Networking & Dedicated Photo Session with xxxxxxxx",
+            "Networking & Dedicated Photo Session with Vishnu Vardhan",
         },
          {
           time: "18:00-18:30",
           event:
-            "Fireside Chat",
+            "Fireside Chat - Interactive session of Vishnu Vardhan with parents & players",
         },
          {
           time: "18:45",
@@ -588,7 +589,7 @@ const handleSubmit = async (e) => {
       <img 
         src={sport} 
         alt="Logo" 
-        className="w-50 h-auto md:w-95 md:h-auto rounded-full shadow-2xl object-cover" 
+        className="w-50 h-auto md:w-100 md:h-auto rounded-full shadow-2xl object-cover" 
       />
     </div>
 
@@ -689,14 +690,14 @@ const handleSubmit = async (e) => {
               <div className="space-y-8">
                 {/* First Paragraph */}
                 <div className="flex items-start">
-                  <div className="bg-blue-600 text-white p-3 rounded-lg mr-4 flex-shrink-0">
+                  {/* <div className="bg-blue-600 text-white p-3 rounded-lg mr-4 flex-shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="m4 6 8 4 8-4" />
                       <path d="m4 6 8 4 8-4" />
                       <path d="m20 12-8 4-8-4" />
                       <path d="m4 18 8 4 8-4" />
                     </svg>
-                  </div>
+                  </div> */}
                   <div>
                     <p className="text-gray-700 text-lg mb-4">
                       <span className=" text-gray-900">
@@ -1153,10 +1154,10 @@ const handleSubmit = async (e) => {
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
       {[
-        { name: 'KONOIKE', logo: konoike, link: 'https://www.konoike.net/' },
+        { name: 'KONOIKE', logo: konoike, link: 'https://www.konoike.net/en/' },
         { name: 'FSNL', logo: fsnl, link: 'https://www.fsnl.co.in/' },
         { name: 'BSP', logo: sail, link: 'https://sail.co.in/' },
-        { name: 'DDBTA', link: '#' },
+        { name: 'DDBTA',logo: ddbta, link: '#' },
         { name: 'KAADO', logo: Kaado, link: '#' }
       ].map((sponsor, index) => (
         <a
