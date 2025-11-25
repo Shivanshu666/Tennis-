@@ -588,7 +588,7 @@ const handleSubmit = async (e) => {
       <img 
         src={sport} 
         alt="Logo" 
-        className="w-20 h-20 md:w-80 md:h-auto rounded-full shadow-2xl object-cover" 
+        className="w-50 h-auto md:w-95 md:h-auto rounded-full shadow-2xl object-cover" 
       />
     </div>
 
@@ -629,7 +629,7 @@ const handleSubmit = async (e) => {
             Venue
           </p>
           <p className="text-white font-bold text-base leading-tight">
-            Bhilai Tennis Complex, Sector-7, Bhilai
+            Bhilai Tennis Complex, Sector-5, Bhilai
           </p>
         </div>
       </div>
@@ -1526,12 +1526,11 @@ const handleSubmit = async (e) => {
           </div>
         </div>
         <p className="text-gray-300 mb-4 max-w-md text-sm leading-relaxed">
-          Join the premier tennis tournament in Bhilai featuring intense competition, 
-          sportsmanship, and unforgettable moments on the court.
+          Join Bhilai’s top tennis tournament and experience high-level competition, unmatched sportsmanship and memorable action on the court.
         </p>
         <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
           <MapPin className="w-4 h-4" />
-          <span className="text-sm">Bhilai Tennis Complex, Sector-7, Bhilai</span>
+          <span className="text-sm">Bhilai Tennis Complex, Sector-5, Bhilai</span>
         </div>
       </div>
 
