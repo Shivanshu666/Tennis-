@@ -711,61 +711,65 @@ const handleSubmit = async (e) => {
                     This tournament is more than just competition — it is a celebration of <span className="text-black font-bold">Resilience, Leadership, Teamwork and Sportsmanship.</span>  These values shape not only the athletes we become, but the people we aspire to be.
                   </p>
 
-                  {/* Three Icon Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {/* Three Icon Grid */}
+<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                    {/* First Value */}
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-28 h-auto rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
-                        <img
-                          src={sportsmanshipIcon}
-                          alt="Sportsmanship Icon"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <h4 className="text-xl font-bold text-blue-900 mb-2">
-                        Sportsmanship & Fair Play
-                      </h4>
-                      <p className="text-black font-semibold">
-                        We strive to compete with integrity, humility, and respect for the spirit of the game.
-                      </p>
-                    </div>
+  {/* First Value */}
+  <div className="flex flex-col items-center text-center">
+    <div className="w-28 h-28 rounded-full bg-blue-100 border-4 border-blue-300 shadow-md 
+                    flex items-center justify-center mb-4 overflow-hidden">
+      <img
+        src={sportsmanshipIcon}
+        alt="Sportsmanship Icon"
+        className="w-full h-full object-contain"
+      />
+    </div>
+    <h4 className="text-xl font-bold text-blue-900 mb-2">
+      Sportsmanship & Fair Play
+    </h4>
+    <p className="text-black font-semibold">
+      We strive to compete with integrity, humility, and respect for the spirit of the game.
+    </p>
+  </div>
 
-                    {/* Second Value */}
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-28 h-auto rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
-                        <img
-                          src={respectIcon}
-                          alt="Respect Icon"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <h4 className="text-xl font-bold text-blue-900 mb-2">
-                        Respect
-                      </h4>
-                      <p className="text-black font-semibold">
-                        Respect for oneself, opponents, officials and the game's legacy.
-                      </p>
-                    </div>
+  {/* Second Value */}
+  <div className="flex flex-col items-center text-center">
+    <div className="w-28 h-28 rounded-full bg-blue-100 border-4 border-blue-300 shadow-md 
+                    flex items-center justify-center mb-4 overflow-hidden">
+      <img
+        src={respectIcon}
+        alt="Respect Icon"
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <h4 className="text-xl font-bold text-blue-900 mb-2">
+      Respect
+    </h4>
+    <p className="text-black font-semibold">
+      Respect for oneself, opponents, officials and the game's legacy.
+    </p>
+  </div>
 
-                    {/* Third Value */}
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-28 h-auto rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
-                        <img
-                          src={integrityIcon}
-                          alt="Integrity Icon"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <h4 className="text-xl font-bold text-blue-900 mb-2">
-                        Honesty & Integrity
-                      </h4>
-                      <p className="text-black font-semibold">
-                        Do the right thing, even when no one’s watching. Always be honest and show integrity.
-                      </p>
-                    </div>
+  {/* Third Value */}
+  <div className="flex flex-col items-center text-center">
+    <div className="w-28 h-28 rounded-full bg-blue-100 border-4 border-blue-300 shadow-md 
+                    flex items-center justify-center mb-4 overflow-hidden">
+      <img
+        src={integrityIcon}
+        alt="Integrity Icon"
+        className="w-full h-full object-contain"
+      />
+    </div>
+    <h4 className="text-xl font-bold text-blue-900 mb-2">
+      Honesty & Integrity
+    </h4>
+    <p className="text-black font-semibold">
+      Do the right thing, even when no one's watching. Always be honest and show integrity.
+    </p>
+  </div>
 
-                  </div>
+</div>
+
 
                 </div>
               </div>
