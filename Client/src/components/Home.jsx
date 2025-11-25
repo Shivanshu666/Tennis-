@@ -473,15 +473,7 @@ const handleSubmit = async (e) => {
   id="home"
   className="relative min-h-screen flex items-center justify-center p-7 md:pt-8 overflow-hidden"
 >
-  {/* Background with Darker Overlay */}
-  {/* <div
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style={{ backgroundImage: `url(${back})` }}
-  >
-    <div className="absolute inset-0 bg-blue-900/40 backdrop-blur-[1px]"></div>
-    
-    <div className="absolute inset-0 bg-black/30"></div>
-  </div> */}
+ 
   <div
   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: `url(${back})` }}
@@ -582,12 +574,12 @@ const handleSubmit = async (e) => {
       <img 
         src={sport} 
         alt="Logo" 
-        className="w-20 h-20 md:w-30 md:h-auto rounded-full shadow-2xl object-cover" 
+        className="w-20 h-20 md:w-40 md:h-auto rounded-full shadow-2xl object-cover" 
       />
     </div>
 
     {/* DATE + VENUE */}
-    <div className="max-w-xl mx-auto mb-10">
+    <div className="max-w-md mx-auto mb-10">
       <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 
           hover:shadow-xl hover:scale-[1.015] transition-all duration-300 relative overflow-hidden group">
 
@@ -598,11 +590,7 @@ const handleSubmit = async (e) => {
 
         <div className="flex items-start gap-5 relative z-10">
 
-          {/* Big Icon Badge */}
-          <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center shadow-md 
-              group-hover:scale-110 transition-transform duration-300">
-            <Calendar className="w-6 h-6 text-white" />
-          </div>
+   
 
           <div className="flex-1 space-y-3">
 
@@ -642,7 +630,7 @@ const handleSubmit = async (e) => {
 
     {/* Description */}
     <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10 px-4">
-      Join one of the biggest tennis tournaments of Bhilai and compete at the highest level.
+     Step into one of the Bhilai’s biggest tennis tournament and test your game against the best.
     </p>
 
     {/* Buttons */}
@@ -675,10 +663,10 @@ const handleSubmit = async (e) => {
 </section>
 
       {/* Additional Sections */}
-      <div className="bg-white">
+      <div className="bg-white py-20">
 
         {/* About Section */}
-        <section id="about" className="py-20 md:py-24 lg:py-20 bg-white">
+        <section id="about" className=" py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
@@ -700,21 +688,21 @@ const handleSubmit = async (e) => {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                    <p className="text-gray-700 text-lg mb-4">
                       <span className=" text-gray-900">
                         The <span className="text-black font-bold">FSNL–KONOIKE Invitational Tennis Tournament 2025</span> is scheduled to take place on <span className="text-black font-bold">20–21 December 2025</span> , in partnership with the <span className="text-black font-bold">District Durg Bhilai Tennis Association – Smriti Nagar Tennis Academy, Bhilai.</span> 
                       </span>
                     </p>
-                    <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    <p className="text-gray-700 text-lg  mb-6">
                       <span className="font-semibold text-gray-900">
                         This tournament aims to showcase emerging talent, celebrate the culture of tennis in the region, and unite tennis communities under the powerful theme:
                       </span>
                     </p>
-                    <p className="text-blue-700 font-semibold text-lg mb-4">"The Power of Sport to Fuel Social Development."</p>
-                    <p className="text-gray-900 text-lg leading-relaxed mb-6">
-                      FSNL–KONOIKE is proud to bring together <span className="text-black font-bold">tennis academies, tennis schools, and tennis clubs from across Chhattisgarh</span>, making this one of the largest academy- and club-based tennis tournaments in the region. The tournament provides players with an excellent platform to challenge themselves and compete in a high-quality, professionally organized environment.
+                    <p className="text-blue-700 font-bold text-lg mb-4">"The Power of Sport to Fuel Social Development."</p>
+                    <p className="text-gray-900 text-lg  mb-6">
+                      FSNL–KONOIKE is proud to bring together <span className="text-black font-bold">tennis academies, tennis schools, and tennis clubs from across Chhattisgarh</span>, making this one of the largest academy and club based tennis tournaments in the region. The tournament provides players with an excellent platform to challenge themselves and compete in a high-quality, professionally organized environment.
                     </p>
-                    <p className="text-gray-900 text-lg leading-relaxed mb-4">
+                    <p className="text-gray-900 text-lg  mb-4">
                       Beyond competition, our vision is to ensure that <span className="text-black font-bold">every player, parent, and coach serves as an ambassador</span>  for their academy or club. Regardless of victory or defeat, we uphold the values of <span>respect, sportsmanship, and fair play</span>—qualities that define not just athletes, but responsible members of the community.
                     </p>
                   </div>
@@ -723,8 +711,8 @@ const handleSubmit = async (e) => {
                 {/* Core Values Section */}
                 <div className="mt-12">
                   <h3 className="text-3xl font-bold text-black text-center mb-8">Our Core Values</h3>
-                  <p className="text-gray-00 text-lg leading-relaxed text-center mb-10">
-                    This tournament is more than just competition — it is a celebration of <span className="text-black font-bold">Resilience, Leadership, Teamwork, and Sportsmanship.</span>  These values shape not only the athletes we become, but the people we aspire to be.
+                  <p className="text-gray-00 text-lg text-center mb-10">
+                    This tournament is more than just competition — it is a celebration of <span className="text-black font-bold">Resilience, Leadership, Teamwork and Sportsmanship.</span>  These values shape not only the athletes we become, but the people we aspire to be.
                   </p>
 
                   {/* Three Icon Grid */}
@@ -742,7 +730,7 @@ const handleSubmit = async (e) => {
                       <h4 className="text-xl font-semibold text-gray-900 mb-2">
                         Sportsmanship & Fair Play
                       </h4>
-                      <p className="text-gray-700">
+                      <p className="text-blue-900 font-bold">
                         We strive to compete with integrity, humility, and respect for the spirit of the game.
                       </p>
                     </div>
@@ -759,7 +747,7 @@ const handleSubmit = async (e) => {
                       <h4 className="text-xl font-semibold text-gray-900 mb-2">
                         Respect
                       </h4>
-                      <p className="text-gray-700">
+                      <p className="text-blue-900 font-bold">
                         Respect for oneself, opponents, officials and the game's legacy.
                       </p>
                     </div>
@@ -776,7 +764,7 @@ const handleSubmit = async (e) => {
                       <h4 className="text-xl font-semibold text-gray-900 mb-2">
                         Honesty & Integrity
                       </h4>
-                      <p className="text-gray-700">
+                      <p className="text-blue-900 font-bold">
                         Do the right thing, even when no one’s watching. Always be honest and show integrity.
                       </p>
                     </div>
@@ -928,7 +916,7 @@ const handleSubmit = async (e) => {
           </p>
           <p className="text-blue-100 text-lg sm:text-xl font-semibold leading-relaxed">
             <span className="bg-blue-500/20 px-3 py-2 rounded-lg backdrop-blur-sm inline-block scale-105 border border-blue-300/30">
-              🏆 Trophies & 📜 Certificates for all participants
+              🏆 Trophies  📜 Certificates for all participants
             </span>
           </p>
         </div>
@@ -937,7 +925,7 @@ const handleSubmit = async (e) => {
 
     {/* Bottom Border */}
     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-100 scale-x-100"></div>
-  </div>
+  </div>  
 
   {/* Floating Confetti */}
   <>
@@ -987,6 +975,7 @@ const handleSubmit = async (e) => {
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 Tournament Categories
               </h2>
+                <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
               <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
                 Compete across multiple age groups and skill levels
               </p>
@@ -995,7 +984,7 @@ const handleSubmit = async (e) => {
 
 
             {/* Categories Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12 lg:mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 lg:mb-16">
               {/* Red Series */}
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center space-x-3 mb-4">
@@ -1093,6 +1082,7 @@ const handleSubmit = async (e) => {
           <h1 className="text-3xl font-bold text-center mb-6">
             Tournament Schedule
           </h1>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
 
           {schedule.map((day, index) => (
             <div key={index} className="mb-10">
@@ -1127,9 +1117,8 @@ const handleSubmit = async (e) => {
       <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold text-gray-900 mb-4">
         <span className="text-5xl mt-9">Our Sponsors</span>
       </h2>
-      <p className="text-lg sm:text-xl text-gray-600 px-4">
-
-      </p>
+      <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+      
     </div>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
@@ -1285,7 +1274,7 @@ const handleSubmit = async (e) => {
         Get In <span className="text-blue-600">Touch</span>
       </h2>
       <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-        Have questions about the tournament? We're here to help you with all your inquiries.
+        We’re here to assist you with any questions you may have.
       </p>
       <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
     </div>
