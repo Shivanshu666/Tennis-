@@ -6,16 +6,15 @@ import fsnl from "../assets/partner/FSNL.jpeg";
 import konoike from "../assets/partner/konoke.png";
 import sail from "../assets/partner/sail.png";
 import Kaado from "../assets/partner/Kaadoo.png";
-import sportsmanshipIcon from "../assets/core/sport.jpeg";
-import respectIcon from "../assets/core/sport.jpeg";
-import integrityIcon from "../assets/core/sport.jpeg";
+import sportsmanshipIcon from "../assets/core/sportsmanship.png";
+import respectIcon from "../assets/core/respect.png";
+import integrityIcon from "../assets/core/honesty.png";
 import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin, Heart,Calendar } from 'lucide-react';
 import gsap from "gsap";
 
 // Gallery 
 import gallery1 from "../assets/gallery/gallery1.jpeg"
 import gallery2 from "../assets/gallery/gallery2.jpeg"
-
 
 const Home = () => {
 
@@ -737,7 +736,7 @@ const handleSubmit = async (e) => {
                         <img
                           src={sportsmanshipIcon}
                           alt="Sportsmanship Icon"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <h4 className="text-xl font-semibold text-gray-900 mb-2">
@@ -754,7 +753,7 @@ const handleSubmit = async (e) => {
                         <img
                           src={respectIcon}
                           alt="Respect Icon"
-                          className="w-14 h-14 object-contain"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <h4 className="text-xl font-semibold text-gray-900 mb-2">
@@ -771,7 +770,7 @@ const handleSubmit = async (e) => {
                         <img
                           src={integrityIcon}
                           alt="Integrity Icon"
-                          className="w-14 h-14 object-contain"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <h4 className="text-xl font-semibold text-gray-900 mb-2">
