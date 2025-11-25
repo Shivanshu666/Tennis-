@@ -690,33 +690,42 @@ const handleSubmit = async (e) => {
               <div className="space-y-8">
                 {/* First Paragraph */}
                 <div className="flex items-start">
-                  {/* <div className="bg-blue-600 text-white p-3 rounded-lg mr-4 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m4 6 8 4 8-4" />
-                      <path d="m4 6 8 4 8-4" />
-                      <path d="m20 12-8 4-8-4" />
-                      <path d="m4 18 8 4 8-4" />
-                    </svg>
-                  </div> */}
-                  <div>
-                    <p className="text-gray-700 text-lg mb-4">
-                      <span className=" text-gray-900">
-                        The <span className="text-black font-bold">FSNL–KONOIKE Invitational Tennis Tournament 2025</span> is scheduled to take place on <span className="text-black font-bold">20–21 December 2025</span> , in partnership with the <span className="text-black font-bold">District Durg Bhilai Tennis Association – Smriti Nagar Tennis Academy, Bhilai.</span> 
-                      </span>
-                    </p>
-                    <p className="text-gray-700 text-lg  mb-6">
-                      <span className="font-semibold text-gray-900">
-                        This tournament aims to showcase emerging talent, celebrate the culture of tennis in the region, and unite tennis communities under the powerful theme:
-                      </span>
-                    </p>
-                    <p className="text-blue-700 font-bold text-lg mb-4">"The Power of Sport to Fuel Social Development."</p>
-                    <p className="text-gray-900 text-lg  mb-6">
-                      FSNL–KONOIKE is proud to bring together <span className="text-black font-bold">tennis academies, tennis schools, and tennis clubs from across Chhattisgarh</span>, making this one of the largest academy and club based tennis tournaments in the region. The tournament provides players with an excellent platform to challenge themselves and compete in a high-quality, professionally organized environment.
-                    </p>
-                    <p className="text-gray-900 text-lg  mb-4">
-                      Beyond competition, our vision is to ensure that <span className="text-black font-bold">every player, parent, and coach serves as an ambassador</span>  for their academy or club. Regardless of victory or defeat, we uphold the values of <span>respect, sportsmanship, and fair play</span>—qualities that define not just athletes, but responsible members of the community.
-                    </p>
-                  </div>
+              <div className="text-left">
+  <p className="text-gray-700 text-lg mb-4 text-justify leading-relaxed">
+    <span className="text-gray-900">
+      The <span className="text-black font-bold">FSNL–KONOIKE Invitational Tennis Tournament 2025</span> is
+      scheduled to take place on <span className="text-black font-bold">20–21 December 2025</span>, in partnership
+      with the <span className="text-black font-bold">District Durg Bhilai Tennis Association – Smriti Nagar
+      Tennis Academy, Bhilai.</span>
+    </span>
+  </p>
+
+  <p className="text-gray-700 text-lg mb-6 text-justify leading-relaxed">
+    <span className="font-semibold text-gray-900">
+      This tournament aims to showcase emerging talent, celebrate the culture of tennis in the region, and unite
+      tennis communities under the powerful theme:
+    </span>
+  </p>
+
+  <p className="text-blue-700 font-bold text-lg mb-4 text-left">
+    "The Power of Sport to Fuel Social Development."
+  </p>
+
+  <p className="text-gray-900 text-lg mb-6 text-justify leading-relaxed">
+    FSNL–KONOIKE is proud to bring together <span className="text-black font-bold">tennis academies, tennis
+    schools, and tennis clubs from across Chhattisgarh</span>, making this one of the largest academy and
+    club-based tennis tournaments in the region. The tournament provides players with an excellent platform to
+    challenge themselves and compete in a high-quality, professionally organized environment.
+  </p>
+
+  <p className="text-gray-900 text-lg mb-4 text-justify leading-relaxed">
+    Beyond competition, our vision is to ensure that <span className="text-black font-bold">every player, parent,
+    and coach serves as an ambassador</span> for their academy or club. Regardless of victory or defeat, we uphold
+    the values of <span>respect, sportsmanship, and fair play</span>—qualities that define not just athletes, but
+    responsible members of the community.
+  </p>
+</div>
+
                 </div>
 
                 {/* Core Values Section */}
