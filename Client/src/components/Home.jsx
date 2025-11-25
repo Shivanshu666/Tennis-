@@ -1,5 +1,5 @@
 // components/Home.jsx
-import back from "../assets/home9.jpg";
+import back from "../assets/home10.jpg";
 import sport from "../assets/logo2.jpeg";
 import { useRef, useEffect, useState } from "react";
 import fsnl from "../assets/partner/FSNL.jpeg";
@@ -574,7 +574,7 @@ const handleSubmit = async (e) => {
       <img 
         src={sport} 
         alt="Logo" 
-        className="w-20 h-20 md:w-40 md:h-auto rounded-full shadow-2xl object-cover" 
+        className="w-20 h-20 md:w-50 md:h-auto rounded-full shadow-2xl object-cover" 
       />
     </div>
 
@@ -598,7 +598,7 @@ const handleSubmit = async (e) => {
             <div className="flex items-start gap-3">
               <Calendar className="w-4 h-4 text-blue-300 mt-[2px]" />
               <div>
-                <p className="text-blue-200 text-start text-[12px] font-semibold uppercase tracking-widest">
+                <p className="text-blue-200 text-start text-[13px] font-bold uppercase tracking-widest">
                   Tournament Date
                 </p>
                 <p className="text-white font-bold text-lg leading-tight">
@@ -614,7 +614,7 @@ const handleSubmit = async (e) => {
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
               <div>
-                <p className="text-green-200 text-[12px] text-start font-semibold uppercase tracking-widest">
+                <p className="text-green-200 text-[13px] text-start font-bold uppercase tracking-widest">
                   Venue
                 </p>
                 <p className="text-white font-bold text-base leading-tight">
@@ -720,51 +720,51 @@ const handleSubmit = async (e) => {
 
                     {/* First Value */}
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
+                      <div className="w-28 h-auto rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
                         <img
                           src={sportsmanshipIcon}
                           alt="Sportsmanship Icon"
                           className="w-full h-full object-contain"
                         />
                       </div>
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h4 className="text-xl font-bold text-blue-900 mb-2">
                         Sportsmanship & Fair Play
                       </h4>
-                      <p className="text-blue-900 font-bold">
+                      <p className="text-black font-semibold">
                         We strive to compete with integrity, humility, and respect for the spirit of the game.
                       </p>
                     </div>
 
                     {/* Second Value */}
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
+                      <div className="w-28 h-auto rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
                         <img
                           src={respectIcon}
                           alt="Respect Icon"
                           className="w-full h-full object-contain"
                         />
                       </div>
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h4 className="text-xl font-semibold text-blue-900 mb-2">
                         Respect
                       </h4>
-                      <p className="text-blue-900 font-bold">
+                      <p className="text-black font-semibold">
                         Respect for oneself, opponents, officials and the game's legacy.
                       </p>
                     </div>
 
                     {/* Third Value */}
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
+                      <div className="w-28 h-auto rounded-full bg-blue-100 flex items-center justify-center mb-4 overflow-hidden">
                         <img
                           src={integrityIcon}
                           alt="Integrity Icon"
                           className="w-full h-full object-contain"
                         />
                       </div>
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                      <h4 className="text-xl font-semibold text-blue-900 mb-2">
                         Honesty & Integrity
                       </h4>
-                      <p className="text-blue-900 font-bold">
+                      <p className="text-black font-semibold">
                         Do the right thing, even when no one’s watching. Always be honest and show integrity.
                       </p>
                     </div>
@@ -775,7 +775,7 @@ const handleSubmit = async (e) => {
               </div>
 
                 {/* Additional Information */}
-            <div className="grid grid-cols-1 md:grid-cols-3 mt-12 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 mt-16 gap-6 lg:gap-8">
               {/* Entry Fees */}
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-blue-100 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -805,12 +805,19 @@ const handleSubmit = async (e) => {
                 <div className="text-2xl font-bold text-green-600 mb-2">15th Dec 2025</div>
                 <p className="text-gray-600 mb-3">Submit via Google Form or Direct Message</p>
                 <div className="flex justify-center space-x-2 text-xs">
-                  <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full flex items-center">
-                    <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Google Form
-                  </span>
+              <a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform?pli=1&fbzx=8530774600493220154" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="inline-block"
+>
+  <span className="bg-green-100 text-green-700 px-3 py-2 rounded-full flex items-center hover:bg-green-200 hover:text-green-800 transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-md">
+    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+    Google Form
+  </span>
+</a>
                   <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full flex items-center">
                     <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -1025,7 +1032,7 @@ const handleSubmit = async (e) => {
               </div>
 
               {/* Yellow Series - Junior Performance */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-3 h-8 bg-yellow-500 rounded-full"></div>
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Junior Performance (Yellow Series)</h3>
@@ -1038,7 +1045,7 @@ const handleSubmit = async (e) => {
               </div>
 
               {/* Yellow Series - Elite */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-3 h-8 bg-yellow-600 rounded-full"></div>
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Elite (Yellow Series)</h3>
@@ -1051,7 +1058,7 @@ const handleSubmit = async (e) => {
               </div>
 
               {/* Yellow Series - Challengers */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border-l-4 border-yellow-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-3 h-8 bg-yellow-700 rounded-full"></div>
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Challengers (Yellow Series)</h3>
@@ -1079,7 +1086,7 @@ const handleSubmit = async (e) => {
     >
       <div className="min-h-screen bg-gray-100 p-8">
         <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-8">
-          <h1 className="text-3xl font-bold text-center mb-6">
+          <h1 className="text-4xl font-bold text-center mb-6">
             Tournament Schedule
           </h1>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
@@ -1165,12 +1172,12 @@ const handleSubmit = async (e) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Tournament <span className="text-blue-600">Gallery</span>
+            Tournament <span className="text-black">Gallery</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
             Capturing the intensity, passion, and glory of every match
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+         <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
         </div>
 
         {/* Gallery Grid */}
@@ -1276,7 +1283,7 @@ const handleSubmit = async (e) => {
       <p className="text-xl text-gray-600 max-w-2xl mx-auto">
         We’re here to assist you with any questions you may have.
       </p>
-      <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+       <div className="w-20 h-1 bg-blue-600 mx-auto mt-6"></div>
     </div>
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
