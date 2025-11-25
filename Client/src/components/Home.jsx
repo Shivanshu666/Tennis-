@@ -347,9 +347,9 @@ const handleSubmit = async (e) => {
                 />
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col justify-center text-center">
                 <span className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  FSNL-KONOIKE OPEN
+                  FSNL-KONOIKE <br/> <span className="text-center">OPEN</span>
                 </span>
               </div>
             </div>
@@ -487,104 +487,84 @@ const handleSubmit = async (e) => {
 
 
   {/* --- ENTRY FEE (Desktop) --- */}
-  <div
-    ref={entryFeeRef}
-    className="hidden md:block absolute top-32 right-4 lg:right-8 z-20 cursor-pointer"
-  >
-    <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-5 shadow-2xl border-2 border-yellow-300 relative">
-      <div className="text-center">
-        <div className="flex items-center justify-center space-x-2 mb-2">
-          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span className="text-white font-bold text-xl">₹100</span>
-        </div>
-        <div className="text-white text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-2 py-1">
-          Entry Fee
-        </div>
+<div
+  ref={entryFeeRef}
+  className="hidden md:block absolute top-32 right-4 lg:right-8 z-20 cursor-pointer"
+>
+  {/* Standardized width (w-32) added for consistent sizing */}
+  <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 shadow-2xl border-2 border-yellow-300 relative w-32">
+    <div className="text-center">
+      <div className="flex items-center justify-center space-x-2 mb-2">
+        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span className="text-white font-bold text-xl">₹100</span>
       </div>
-
-      {/* Ping circle */}
-      <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
-      <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
+      <div className="text-white text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-1 py-1">
+        Entry Fee
+      </div>
     </div>
+
+    {/* Ping circle */}
+    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
   </div>
+</div>
 
   {/* --- CASH PRIZE (Desktop) --- */}
-  <div
-    ref={cashPrizeRef}
-    className="hidden md:block absolute top-40 left-4 lg:left-8 z-20 cursor-pointer"
-  >
-    <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-5 shadow-2xl border-2 border-green-300 relative">
-      <div className="text-center">
-        <div className="flex items-center justify-center space-x-2 mb-2">
-          <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
-            />
-          </svg>
-          <span className="text-white font-bold text-xl">1.5 Lakhs</span>
-        </div>
-        <div className="text-yellow-100 text-xs font-semibold uppercase tracking-wide">
-          Cash Prize
-        </div>
+<div
+  ref={cashPrizeRef}
+  className="hidden md:block absolute top-40 left-4 lg:left-8 z-20 cursor-pointer"
+>
+  {/* Added h-24 to fix the height to match the Entry Fee box */}
+  <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-4 shadow-2xl border-2 border-green-300 relative w-32 h-24 flex flex-col justify-center items-center">
+    <div className="text-center">
+      <div className="flex items-center justify-center space-x-2 mb-2">
+        <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+          />
+        </svg>
+        <span className="text-white font-bold text-xl">1.5 Lakhs</span>
       </div>
-
-      <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+      <div className="text-yellow-100 text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-1 py-1">
+        Cash Prize
+      </div>
     </div>
+
+    <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
   </div>
+</div>
 
   {/* --- MAIN CONTENT --- */}
   <div className="relative z-10 max-w-6xl mx-auto px-4 text-center py-14">
 
     {/* Highlight Line + Logo */}
     <div className="flex items-center justify-center gap-3 mb-5 mt-2">
-      <span className="text-white font-bold text-sm md:text-base tracking-wide ">
+      <span className="text-white font-bold text-sm md:text-lg italic tracking-wide ">
         TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH
       </span>
     </div>
 
-    {/* Tournament Badge */}
-    {/* <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-3 mb-8 shadow-2xl hover:scale-105 transition-transform duration-300">
-      <svg
-        className="w-5 h-5 text-yellow-300 mr-3 animate-bounce"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      
-      <span className="text-white font-extrabold text-sm md:text-base uppercase tracking-widest">
-        THE FSNL - KONOIKE INVITATIONAL Tennis Tournament 2025
-        <br />
-        <span className="text-xs block mt-1">"Baseline of Hope"</span>
-      </span>
-    </div> */}
+   
 <div className="flex justify-center">
-      {/* Tailwind Utility Classes Used:
-        - Gradient: from-purple-700 to-blue-700
-        - Hover Effects: scale-105, shadow-2xl, transition-all, duration-500
-        - Inner Glow: absolute, inset-0, group-hover:opacity-60 (requires parent 'group')
-      */}
+      
       <div className="inline-flex items-center bg-gradient-to-r from-purple-700 to-blue-700 backdrop-blur-sm border border-purple-400 rounded-full px-8 py-4 mb-8 shadow-2xl shadow-purple-900/50 hover:scale-105 transition-all duration-500 relative group cursor-pointer overflow-hidden">
         
-        {/* Subtle Background Glow Effect (The Attraction) */}
-        {/* Note: In React, inline styles use camelCase */}
         <div 
           className="absolute inset-0 rounded-full opacity-30 group-hover:opacity-60 transition-opacity duration-500" 
           style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%)' }}
         ></div>
 
-        {/* Clock/Time Icon */}
+  
         <svg
           className="w-6 h-6 text-yellow-300 mr-4 animate-pulse drop-shadow-lg shadow-yellow-500/80 z-10" // z-10 ensures icon is above the glow
           fill="none"
@@ -596,14 +576,14 @@ const handleSubmit = async (e) => {
 
         {/* Text Content */}
         <span className="text-white font-extrabold text-base md:text-lg uppercase tracking-widest z-10" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-          THE FSNL - KONOIKE INVITATIONAL **TENNIS TOURNAMENT 2025**
+          THE FSNL - KONOIKE INVITATIONAL TENNIS TOURNAMENT 2025
           <br />
-          <span className="text-sm block mt-1 font-semibold text-yellow-300/90 italic">"Baseline of Hope"</span>
+          <span className="text-base block mt-1 font-semibold text-yellow-300/90 italic">"Baseline of Hope"</span>
         </span>
       </div>
     </div>
 
-    
+
     <div className="flex justify-center mb-12">
       <img 
         src={sport} 
@@ -1217,10 +1197,10 @@ const handleSubmit = async (e) => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Tournament <span className="text-black">Gallery</span>
           </h2>
+         <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
             Capturing the intensity, passion, and glory of every event/match
           </p>
-         <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
         </div>
 
         {/* Gallery Grid */}
@@ -1323,10 +1303,10 @@ const handleSubmit = async (e) => {
       <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
         Get In <span className="text-black-600">Touch</span>
       </h2>
+       <div className="w-20 h-1 bg-blue-600 mx-auto mt-6"></div>
       <p className="text-xl text-gray-600 max-w-2xl mx-auto">
         We’re here to assist you with any questions you may have.
       </p>
-       <div className="w-20 h-1 bg-blue-600 mx-auto mt-6"></div>
     </div>
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -1338,7 +1318,7 @@ const handleSubmit = async (e) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 ml-4">Tournament Directors</h3>
+          <h3 className="text-2xl font-bold text-gray-900 ml-4">Tournament Director</h3>
         </div>
 
         <div className="space-y-6">
