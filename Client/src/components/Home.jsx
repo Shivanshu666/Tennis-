@@ -458,197 +458,136 @@ const handleSubmit = async (e) => {
 
 <section
   id="home"
-  className="relative min-h-screen flex items-center justify-center p-7 md:pt-9 overflow-hidden"
+  className="relative min-h-screen flex flex-col items-center justify-center p-7 md:pt-9 overflow-hidden"
 >
- 
+  {/* Background Image */}
   <div
-  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-  style={{ backgroundImage: `url(${back})` }}
->
-  {/* Black Blur Layer */}
-  <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
-
-  {/* Extra Black Overlay */}
-  <div className="absolute inset-0 bg-black/30"></div>
-</div>
-
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url(${back})` }}
+  >
+    <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+    <div className="absolute inset-0 bg-black/30"></div>
+  </div>
 
   {/* --- ENTRY FEE (Desktop) --- */}
-<div
-  ref={entryFeeRef}
-  className="hidden md:block absolute md:top-75 lg:top-32 right-4 lg:right-8 z-20 cursor-pointer"
->
-  {/* Standardized width (w-32) added for consistent sizing */}
-  <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 shadow-2xl border-2 border-yellow-300 relative w-32">
-    <div className="text-center">
-      <div className="flex items-center justify-center space-x-2 mb-2">
-        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span className="text-white font-bold text-xl">₹100</span>
+  <div
+    ref={entryFeeRef}
+    className="hidden md:block absolute md:top-70 lg:top-32 right-4 lg:right-8 z-20 cursor-pointer"
+  >
+    <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 shadow-2xl border-2 border-yellow-300 relative w-32">
+      <div className="text-center">
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className="text-white font-bold text-xl">₹100</span>
+        </div>
+        <div className="text-white text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-1 py-1">
+          Entry Fee
+        </div>
       </div>
-      <div className="text-white text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-1 py-1">
-        Entry Fee
-      </div>
+      <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+      <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
     </div>
-
-    {/* Ping circle */}
-    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
-    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
   </div>
-</div>
 
   {/* --- CASH PRIZE (Desktop) --- */}
-<div
-  ref={cashPrizeRef}
-  className="hidden md:block absolute md:top-80 lg:top-40 left-4 lg:left-8 z-20 cursor-pointer"
->
-  {/* Added h-24 to fix the height to match the Entry Fee box */}
-  <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-4 shadow-2xl border-2 border-green-300 relative w-32 h-24 flex flex-col justify-center items-center">
-    <div className="text-center">
-      <div className="flex items-center justify-center space-x-2 mb-2">
-        <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
-          />
-        </svg>
-        <span className="text-white font-bold text-xl">1.5 Lakhs</span>
+  <div
+    ref={cashPrizeRef}
+    className="hidden md:block absolute md:top-80  lg:top-40 left-4 lg:left-8 z-20 cursor-pointer"
+  >
+    <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-4 shadow-2xl border-2 border-green-300 relative w-32 h-24 flex flex-col justify-center items-center">
+      <div className="text-center">
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <svg className="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+          </svg>
+          <span className="text-white font-bold text-xl">1.5 Lakhs</span>
+        </div>
+        <div className="text-yellow-100 text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-1 py-1">
+          Cash Prize
+        </div>
       </div>
-      <div className="text-yellow-100 text-xs font-semibold uppercase tracking-wide bg-black/20 rounded-full px-1 py-1">
-        Cash Prize
-      </div>
+      <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
     </div>
-
-    <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
   </div>
-</div>
 
   {/* --- MAIN CONTENT --- */}
-  <div className="relative z-10 max-w-6xl mx-auto px-4 text-center py-14">
-
-    {/* Highlight Line + Logo */}
-    <div className="flex items-center justify-center gap-3 mb-5 mt-2">
-      <span className="text-white font-bold text-sm md:text-lg italic tracking-wide ">
+  <div className="relative z-10 max-w-6xl mx-auto px-4 text-center py-14 flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-3 mb-5 mt-2">
+      <span className="text-white font-bold text-sm md:text-lg italic tracking-wide">
         TWO DAYS OF ONGOING TENNIS MATCHES AT BHILAI, CHHATTISGARH
       </span>
     </div>
 
-   
-<div className="flex justify-center">
-      
-      <div className="inline-flex items-center bg-gradient-to-r from-purple-700 to-blue-700 backdrop-blur-sm border border-purple-400 rounded-full px-8 py-4 mb-8 shadow-2xl shadow-purple-900/50 hover:scale-105 transition-all duration-500 relative group cursor-pointer overflow-hidden">
-        
-        <div 
-          className="absolute inset-0 rounded-full opacity-30 group-hover:opacity-60 transition-opacity duration-500" 
-          style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%)' }}
-        ></div>
-
-  
-        <svg
-          className="w-6 h-6 text-yellow-300 mr-4 animate-pulse drop-shadow-lg shadow-yellow-500/80 z-10" // z-10 ensures icon is above the glow
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+    <div className="flex flex-col items-center justify-center gap-6 w-full">
+      {/* Highlight Button */}
+      <div className="inline-flex flex-col md:flex-row items-center bg-gradient-to-r from-purple-700 to-blue-700 backdrop-blur-sm border border-purple-400 rounded-full px-6 py-4 md:px-8 md:py-4 shadow-2xl shadow-purple-900/50 hover:scale-105 transition-all duration-500 relative group cursor-pointer overflow-hidden text-center">
+        <div className="absolute inset-0 rounded-full opacity-30 group-hover:opacity-60 transition-opacity duration-500" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%)' }}></div>
+        <svg className="w-6 h-6 text-yellow-300 mb-2 md:mb-0 md:mr-4 animate-pulse drop-shadow-lg shadow-yellow-500/80 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-
-        {/* Text Content */}
         <span className="text-white font-extrabold text-base md:text-lg uppercase tracking-widest z-10" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
           THE FSNL - KONOIKE INVITATIONAL TENNIS TOURNAMENT 2025
           <br />
           <span className="text-base block mt-1 font-semibold text-yellow-300/90 italic">"Baseline of Hope"</span>
         </span>
       </div>
-    </div>
 
-
-    <div className="flex justify-center mb-12">
-      <img 
-        src={sport} 
-        alt="Logo" 
-        className="w-50 h-auto md:w-100 md:h-auto rounded-full shadow-2xl object-cover" 
-      />
+      {/* Logo */}
+      <img src={sport} alt="Logo" className="w-40 md:w-100 h-auto rounded-full shadow-2xl object-cover" />
     </div>
 
     {/* DATE + VENUE */}
-<div className="w-full mx-auto mb-10">
-  <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 
-      hover:shadow-xl hover:scale-[1.015] transition-all duration-300 relative overflow-hidden group">
+    <div className="w-full mx-auto mb-10">
+      <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 hover:shadow-xl hover:scale-[1.015] transition-all duration-300 relative overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-[1200ms]"></div>
+        <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-6 relative z-10">
+          {/* DATE */}
+          <div className="flex items-start gap-3">
+            <Calendar className="w-4 h-4 text-blue-300 mt-[2px]" />
+            <div>
+              <p className="text-blue-200 text-[15px] font-bold uppercase tracking-widest">Tournament Date</p>
+              <p className="text-white font-bold text-lg leading-tight">20 - 21 Dec., 2025</p>
+            </div>
+          </div>
 
-    {/* Shine Animation */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
-        -skew-x-12 translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-[1200ms]">
-    </div>
+          <div className="hidden sm:block w-[1px] h-12 bg-white/20"></div>
 
-    {/* MAIN FLEX — side by side */}
-    <div className="flex items-center justify-between gap-6 relative z-10">
-
-      {/* DATE */}
-      <div className="flex items-start gap-3">
-        <Calendar className="w-4 h-4 text-blue-300 mt-[2px]" />
-        <div>
-          <p className="text-blue-200 text-[15px] font-bold uppercase tracking-widest">
-            Tournament Date
-          </p>
-          <p className="text-white font-bold text-lg leading-tight">
-            20 - 21 Dec., 2025
-          </p>
+          {/* VENUE */}
+          <div className="flex items-start gap-3">
+            <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
+            <div>
+              <p className="text-green-200 text-[15px] font-bold text-start uppercase tracking-widest">Venue</p>
+              <p className="text-white font-bold text-base text-start leading-tight">Bhilai Tennis Complex, Sector-5, Bhilai</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* VERTICAL DIVIDER */}
-      <div className="w-[1px] h-12 bg-white/20"></div>
-
-      {/* VENUE */}
-      <div className="flex items-start gap-3">
-        <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
-        <div>
-          <p className="text-green-200 text-start text-[15px] font-bold uppercase tracking-widest">
-            Venue
-          </p>
-          <p className="text-white font-bold text-base leading-tight">
-            Bhilai Tennis Complex, Sector-5, Bhilai
-          </p>
-        </div>
-      </div>
-
     </div>
-  </div>
-</div>
 
     {/* Description */}
-    <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10 px-4">
-     Step into one of the Bhilai’s biggest tennis tournament and test your game against the best.
+    <p className="text-base md:text-lg text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10 px-2 md:px-4">
+      Step into one of the Bhilai’s biggest tennis tournament and test your game against the best.
     </p>
 
     {/* Buttons */}
-    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 ">
+    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
       {/* Mobile Entry Fee Card */}
-      <div className="md:hidden bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-3 shadow-xl border-2 border-yellow-300 animate-pulse">
-        <div className="text-center">
-          <div className="flex items-center justify-center space-x-2">
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className="text-white font-bold text-base">Only ₹100 Entry Fee</span>
-          </div>
-          <div className="text-yellow-100 text-xs font-semibold uppercase mt-1">Register Now!</div>
+      <div className="md:hidden bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-3 shadow-xl border-2 border-yellow-300 animate-pulse w-full text-center">
+        <div className="flex items-center justify-center space-x-2">
+          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className="text-white font-bold text-base">Only ₹100 Entry Fee</span>
         </div>
+        <div className="text-yellow-100 text-xs font-semibold uppercase mt-1">Register Now!</div>
       </div>
 
-      {/* Register Button with Form Link */}
-      <button 
+      {/* Register Button */}
+      <button
         onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform?pli=1&fbzx=8530774600493220154', '_blank')}
-        className="group px-8 py-4 bg-blue-600 hover:cursor-pointer text-white font-semibold rounded-xl hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300 shadow-2xl flex items-center gap-3"
+        className="group px-8 py-4 bg-blue-600 hover:cursor-pointer text-white font-semibold rounded-xl hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300 shadow-2xl flex items-center gap-3 w-full sm:w-auto justify-center"
       >
         <i className="fas fa-user-plus group-hover:scale-110 transition-transform"></i>
         <span>Register Now & Claim Your Spot</span>
@@ -656,11 +595,10 @@ const handleSubmit = async (e) => {
     </div>
 
   </div>
-
 </section>
 
       {/* Additional Sections */}
-      <div className="bg-white py-20">
+      <div className="bg-white md:py-20">
 
         {/* About Section */}
         <section id="about" className=" py-6 md:py-20 bg-white">
