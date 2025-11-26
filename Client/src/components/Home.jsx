@@ -1707,7 +1707,7 @@ const Home = () => {
               {/* Copyright */}
               <div className="text-center md:text-right">
                 <p className="text-gray-400 text-sm flex items-center justify-center md:justify-end">
-                  Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by FSNL Tennis
+                  Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by FSNLKonoike Tennis
                 </p>
                 <p className="text-gray-400 text-sm mt-1">
                   © THE FSNL - KONOIKE Invitational Tennis Tournament  2025
