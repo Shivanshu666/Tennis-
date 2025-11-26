@@ -615,10 +615,10 @@ const Home = () => {
       </section>
 
       {/* Additional Sections */}
-      <div className="bg-white md:py-20">
+      <div className="bg-white py-10">
 
         {/* About Section */}
-        <section id="about" className=" py-6 md:py-20 bg-white">
+        <section id="about" className=" py-6 md:py-5 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl max-sm:text-2xl sm:text-4xl font-bold text-gray-900 mb-6">
@@ -1020,7 +1020,7 @@ const Home = () => {
 
 
         {/* Categories Section */}
-        <section id="categories" className=" min-h-screen py-6 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <section id="categories" className=" min-h-screen py-6 md:py-10 bg-gradient-to-br from-blue-50 to-indigo-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center  mb-12 lg:mb-16">
               <h2 className="text-2xl  sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -1134,7 +1134,7 @@ const Home = () => {
 
         <section
           id="schedule"
-          className=" min-h-screen -py-10 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-50"
+          className=" min-h-screen  bg-gradient-to-br from-blue-50 to-indigo-50"
         >
           <div className="min-h-screen bg-gray-100 p-8">
             <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-8">
@@ -1173,7 +1173,7 @@ const Home = () => {
 
 
         {/* Sponsors Section */}
-        <section id="sponsors" className="py-6 md:py-20">
+        <section id="sponsors" className="py-6 md:py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center  mb-12 lg:mb-16">
               <h2 className="text-2xl  sm:text-3xl lg:text-2xl font-bold text-gray-900 mb-4">
@@ -1223,7 +1223,7 @@ const Home = () => {
 
 
         {/* Gallery Section */}
-        <section id="gallery" className="max-w-[1400px] mx-auto py-6 md:py-20">
+        <section id="gallery" className="max-w-[1400px] mx-auto py-6 md:py-10">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl max-sm:text-2xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -1329,7 +1329,7 @@ const Home = () => {
 
 
         {/* Contact Section */}
-        <section id="contact" className="py-6 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <section id="contact" className="py-6 md:py-10 bg-gradient-to-br from-gray-50 to-blue-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-6 md:mb-16">
               <h2 className="text-4xl max-sm:text-2xl md:text-5xl font-bold text-gray-900 mb-4">
