@@ -211,7 +211,7 @@ const Home = () => {
       date: "FRIDAY 19 DECEMBER 2025",
       items: [
         { time: "17:00 - 17:45", event: "Distribution of participating T-shirt, Tournament Handbook" },
-        { time: "18:00", event: "Pre-Event Press Conference Followed By Draw Ceremony" },
+        { time: "18:00", event: "Pre-Event Press Conference to be followed by Draw Ceremony" },
      
       ],
     },
@@ -1325,8 +1325,6 @@ const Home = () => {
             </div>
           </div>
         )}
-
-
 
         {/* Contact Section */}
         <section id="contact" className="py-6 md:py-10 bg-gradient-to-br from-gray-50 to-blue-50">
