@@ -18,6 +18,7 @@ import gallery1 from "../assets/gallery/gallery1.jpeg"
 import gallery2 from "../assets/gallery/gallery2.jpeg"
 import gallery3 from "../assets/gallery/gallery3.jpeg"
 import gallery4 from "../assets/gallery/gallery4.jpeg"
+import gallery5 from "../assets/gallery/gallery5.jpeg"
 const Home = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,6 +37,7 @@ const Home = () => {
     { src: gallery2, title: "Player Celebration", category: "Moments", height: "h-80" },
     { src: gallery3, title: "Championship Match", category: "Finals", height: "h-64" },
     { src: gallery4, title: "Player Celebration", category: "Moments", height: "h-80" },
+     { src: gallery5, title: "Player Celebration", category: "Moments", height: "h-80" },
   ];
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
@@ -1201,7 +1203,7 @@ const Home = () => {
                   <div
                     className="bg-white border-2 border-gray-200 rounded-2xl p-6 sm:p-8 text-center hover:border-blue-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 border border-gray-300 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
                       {sponsor.logo && (
                         <img
                           src={sponsor.logo}
@@ -1236,11 +1238,11 @@ const Home = () => {
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer w-[320px]"
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer w-[370px]"
                 onClick={() => openModal(image)}
               >
                 {/* Image Container */}
@@ -1375,22 +1377,45 @@ const Home = () => {
                   </div>
 
                   {/* Additional Contact Info */}
-                  <div>
-                    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm text-gray-600">Email</p>
-                          <p className="font-semibold text-gray-900">fsnlkonoiketennis@gmail.com</p>
-                        </div>
-                      </div>
-                    </div>
+              <div className="space-y-4">
 
-                  </div>
+  {/* Email Box */}
+  <div>
+    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <div>
+          <p className="text-sm text-gray-600">Email</p>
+          <p className="font-semibold text-gray-900">fsnlkonoiketennis@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* WhatsApp Box */}
+  <div>
+    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+          {/* WhatsApp Icon */}
+          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.52 3.48A11.8 11.8 0 0012 0C5.37 0 0 5.02 0 11.22a11 11 0 001.62 5.82L0 24l7.2-2.27a12.6 12.6 0 004.8.96h.01c6.63 0 12-5.02 12-11.22a10.9 10.9 0 00-3.48-7.99zM12 21.34a10.3 10.3 0 01-4.48-1.04l-.32-.15-4.27 1.34 1.38-4.03-.17-.32a9.5 9.5 0 01-1.45-5.17c0-5.26 4.39-9.54 9.79-9.54a9.6 9.6 0 016.84 2.72A9.2 9.2 0 0121.55 12c0 5.26-4.39 9.34-9.55 9.34zm5.27-6.9c-.29-.15-1.72-.85-1.99-.94-.27-.1-.47-.15-.68.15-.2.29-.78.94-.95 1.14-.17.19-.35.22-.65.07-.29-.15-1.22-.45-2.33-1.43-.86-.74-1.44-1.65-1.61-1.94-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.29.29-.49.1-.19.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.24-.58-.48-.49-.68-.5h-.58c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49s1.07 2.87 1.22 3.07c.15.19 2.1 3.34 5.08 4.68.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.72-.7 1.97-1.38.24-.68.24-1.27.17-1.38-.07-.1-.26-.17-.55-.32z"/>
+          </svg>
+        </div>
+        <div>
+          <p className="text-sm text-gray-600">WhatsApp</p>
+          <p className="font-semibold text-gray-900">9303537600</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
                 </div>
               </div>
 
@@ -1514,34 +1539,53 @@ const Home = () => {
             </div>
 
             {/* Additional Info */}
-            <div className="mt-16 text-center">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Need Immediate Assistance?</h3>
-                <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                  For urgent tournament-related queries, feel free to call us directly. We're available to help you with registration, schedule, and any other concerns.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <a
-                    href="tel:9303537600"
-                    className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    Call Now: 9303537600
-                  </a>
-                  <a
-                    href="mailto:fsnlkonoiketennis@gmail.com"
-                    className="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Send Email
-                  </a>
-                </div>
-              </div>
-            </div>
+           <div className="mt-16 text-center">
+  <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
+    <h3 className="text-2xl font-bold mb-4">Need Immediate Assistance?</h3>
+    <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+      For tournament-related queries, feel free to call us directly. We're available to help you with registration, schedule, and any other concerns.
+    </p>
+
+    <div className="flex flex-wrap justify-center gap-4">
+
+      {/* Call Button */}
+      <a
+        href="tel:9303537600"
+        className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg"
+      >
+        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        Call Now: 9303537600
+      </a>
+
+      {/* Email Button */}
+      <a
+        href="mailto:fsnlkonoiketennis@gmail.com"
+        className="inline-flex items-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+      >
+        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        fsnlkonoiketennis@gmail.com
+      </a>
+
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/919303537600"
+        target="_blank"
+        className="inline-flex items-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-all duration-300 shadow-lg"
+      >
+        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.8 11.8 0 0012 0C5.37 0 0 5.02 0 11.22a11 11 0 001.62 5.82L0 24l7.2-2.27a12.6 12.6 0 004.8.96h.01c6.63 0 12-5.02 12-11.22a10.9 10.9 0 00-3.48-7.99zM12 21.34a10.3 10.3 0 01-4.48-1.04l-.32-.15-4.27 1.34 1.38-4.03-.17-.32a9.5 9.5 0 01-1.45-5.17c0-5.26 4.39-9.54 9.79-9.54a9.6 9.6 0 016.84 2.72A9.2 9.2 0 0121.55 12c0 5.26-4.39 9.34-9.55 9.34zm5.27-6.9c-.29-.15-1.72-.85-1.99-.94-.27-.1-.47-.15-.68.15-.2.29-.78.94-.95 1.14-.17.19-.35.22-.65.07-.29-.15-1.22-.45-2.33-1.43-.86-.74-1.44-1.65-1.61-1.94-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.29.29-.49.1-.19.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.24-.58-.48-.49-.68-.5h-.58c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49s1.07 2.87 1.22 3.07c.15.19 2.1 3.34 5.08 4.68.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.72-.7 1.97-1.38.24-.68.24-1.27.17-1.38-.07-.1-.26-.17-.55-.32z"/>
+        </svg>
+        WhatsApp: 9303537600
+      </a>
+
+    </div>
+  </div>
+</div>
+
           </div>
         </section>
       </div>
@@ -1564,7 +1608,7 @@ const Home = () => {
                   <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                     FSNL-KONOIKE OPEN
                   </span>
-                  <p className="text-gray-400 text-sm mt-1">"Baseline of Hope"</p>
+            
                 </div>
               </div>
               <p className="text-gray-300 mb-4 max-w-md text-sm leading-relaxed">
@@ -1606,7 +1650,7 @@ const Home = () => {
                 </div>
                 <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
                   <Calendar className="w-4 h-4" />
-                  <span>20-21 Dec 2025</span>
+                  <span>20-21 Dec., 2025</span>
                 </div>
               </div>
             </div>
@@ -1616,39 +1660,49 @@ const Home = () => {
           <div className="border-t border-gray-700 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               {/* Social Media Icons with Lucide */}
-              <div className="flex justify-center space-x-4">
-                {[
-                  {
-                    icon: <Facebook className="w-5 h-5" />,
-                    color: 'hover:bg-blue-600',
-                    label: 'Facebook'
-                  },
-                  {
-                    icon: <Twitter className="w-5 h-5" />,
-                    color: 'hover:bg-blue-400',
-                    label: 'Twitter'
-                  },
-                  {
-                    icon: <Instagram className="w-5 h-5" />,
-                    color: 'hover:bg-gradient-to-r from-purple-600 to-pink-600',
-                    label: 'Instagram'
-                  },
-                  {
-                    icon: <Youtube className="w-5 h-5" />,
-                    color: 'hover:bg-red-600',
-                    label: 'YouTube'
-                  }
-                ].map((social, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 ${social.color} hover:scale-110 transform shadow-lg`}
-                    aria-label={social.label}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
+          <div className="flex justify-center space-x-4">
+  {[
+    {
+      icon: <Facebook className="w-5 h-5" />,
+      color: 'hover:bg-blue-600',
+      label: 'Facebook'
+    },
+    {
+      // Twitter X icon (updated)
+      icon: (
+        <svg
+          className="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M18.9 2H22l-7.9 9 9.3 11H16l-5.3-6.6L4.8 22H2l8.5-9.7L1.4 2H8l4.7 5.9L18.9 2z" />
+        </svg>
+      ),
+      color: 'hover:bg-blue-400',
+      label: 'Twitter X'
+    },
+    {
+      icon: <Instagram className="w-5 h-5" />,
+      color: 'hover:bg-gradient-to-r from-purple-600 to-pink-600',
+      label: 'Instagram'
+    },
+    {
+      icon: <Youtube className="w-5 h-5" />,
+      color: 'hover:bg-red-600',
+      label: 'YouTube'
+    }
+  ].map((social, index) => (
+    <a
+      key={index}
+      href="#"
+      className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 ${social.color} hover:scale-110 transform shadow-lg`}
+      aria-label={social.label}
+    >
+      {social.icon}
+    </a>
+  ))}
+</div>
+
 
               {/* Copyright */}
               <div className="text-center md:text-right">
@@ -1656,7 +1710,7 @@ const Home = () => {
                   Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by FSNL Tennis
                 </p>
                 <p className="text-gray-400 text-sm mt-1">
-                  © 2025 FSNL - KONOIKE Invitational Tennis Tournament
+                  © THE FSNL - KONOIKE Invitational Tennis Tournament  2025
                 </p>
                 <p className="text-gray-500 text-xs mt-1">
                   Organized by DDBTA – Smriti Nagar Tennis Academy, Bhilai
