@@ -1593,133 +1593,169 @@ const Home = () => {
 
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            {/* Tournament Info */}
-            <div className="text-center md:text-left md:col-span-2">
-              <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
-                <img
-                  src={sport}
-                  alt="FSNL Tennis Logo"
-                  className="w-12 h-12 object-cover rounded-full border-2 border-blue-400 shadow-lg"
-                />
-                <div>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    FSNL-KONOIKE OPEN
-                  </span>
-            
-                </div>
-              </div>
-              <p className="text-gray-300 mb-4 max-w-md text-sm leading-relaxed">
-                Join Bhilai’s top tennis tournament and experience high-level competition, unmatched sportsmanship and memorable action on the court.
-              </p>
-              <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm">Bhilai Tennis Complex, Sector-5, Bhilai</span>
-              </div>
-            </div>
+    <footer className="bg-gray-900 text-white py-12 sm:py-16">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {/* Quick Links - Two Columns */}
-            <div className="text-center md:text-left">
-              <h4 className="text-lg font-semibold mb-4 text-blue-300">Quick Links</h4>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-                {['Home', 'About', 'Categories', 'Schedule', 'Sponsors', 'Gallery', 'Contact'].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="block text-gray-300 hover:text-white transition-all duration-200 text-sm hover:translate-x-1 hover:underline"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
 
-            {/* Contact Info */}
-            <div className="text-center md:text-left">
-              <h4 className="text-lg font-semibold mb-4 text-blue-300">Contact Info</h4>
-              <div className="space-y-3 text-sm text-gray-300">
-                <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
-                  <Phone className="w-4 h-4" />
-                  <span>9303537600</span>
-                </div>
-                <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
-                  <Mail className="w-4 h-4" />
-                  <span>fsnlkonoiketennis@gmail.com</span>
-                </div>
-                <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
-                  <Calendar className="w-4 h-4" />
-                  <span>20-21 Dec., 2025</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Media & Copyright */}
-          <div className="border-t border-gray-700 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              {/* Social Media Icons with Lucide */}
-          <div className="flex justify-center space-x-4">
-  {[
-    {
-      icon: <Facebook className="w-5 h-5" />,
-      color: 'hover:bg-blue-600',
-      label: 'Facebook'
-    },
-    {
-      // Twitter X icon (updated)
-      icon: (
-        <svg
-          className="w-5 h-5"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path d="M18.9 2H22l-7.9 9 9.3 11H16l-5.3-6.6L4.8 22H2l8.5-9.7L1.4 2H8l4.7 5.9L18.9 2z" />
-        </svg>
-      ),
-      color: 'hover:bg-blue-400',
-      label: 'Twitter X'
-    },
-    {
-      icon: <Instagram className="w-5 h-5" />,
-      color: 'hover:bg-gradient-to-r from-purple-600 to-pink-600',
-      label: 'Instagram'
-    },
-    {
-      icon: <Youtube className="w-5 h-5" />,
-      color: 'hover:bg-red-600',
-      label: 'YouTube'
-    }
-  ].map((social, index) => (
-    <a
-      key={index}
-      href="#"
-      className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 ${social.color} hover:scale-110 transform shadow-lg`}
-      aria-label={social.label}
-    >
-      {social.icon}
-    </a>
-  ))}
-</div>
-
-
-              {/* Copyright */}
-              <div className="text-center md:text-right">
-                <p className="text-gray-400 text-sm flex items-center justify-center md:justify-end">
-                  Made with <Heart className="w-4 h-4 mx-1 text-red-500 fill-current" /> by FSNLKonoike Tennis
-                </p>
-                <p className="text-gray-400 text-sm mt-1">
-                  © THE FSNL - KONOIKE Invitational Tennis Tournament  2025
-                </p>
-                <p className="text-gray-500 text-xs mt-1">
-                  Organized by DDBTA – Smriti Nagar Tennis Academy, Bhilai
-                </p>
-              </div>
-            </div>
+      {/* Tournament Info */}
+      <div className="text-center md:text-left md:col-span-2">
+        <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
+          <img
+            src={sport}
+            alt="FSNL Tennis Logo"
+            className="w-12 h-12 object-cover rounded-full border-2 border-blue-400 shadow-lg"
+          />
+          <div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              FSNL-KONOIKE OPEN
+            </span>
           </div>
         </div>
-      </footer>
+
+        <p className="text-gray-300 mb-4 max-w-md text-sm leading-relaxed">
+          Join Bhilai’s top tennis tournament and experience high-level competition, unmatched sportsmanship and memorable action on the court.
+        </p>
+
+        <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
+          <MapPin className="w-4 h-4" />
+          <span className="text-sm">Bhilai Tennis Complex, Sector-5, Bhilai</span>
+        </div>
+      </div>
+
+      {/* Quick Links */}
+      <div className="text-center md:text-left">
+        <h4 className="text-lg font-semibold mb-4 text-blue-300">Quick Links</h4>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+          {[
+            { name: 'Home', link: '#home' },
+            { name: 'About', link: '#about' },
+            { name: 'Categories', link: '#categories' },
+            { name: 'Schedule', link: '#schedule' },
+            { name: 'Sponsors', link: '#sponsors' },
+            { name: 'Gallery', link: '#gallery' },
+            { name: 'Contact', link: '#contact' }
+          ].map((item) => (
+            <a
+              key={item.name}
+              href={item.link}
+              className="block text-gray-300 hover:text-white transition-all duration-200 text-sm hover:translate-x-1 hover:underline"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact */}
+      <div className="text-center md:text-left">
+        <h4 className="text-lg font-semibold mb-4 text-blue-300">Contact Info</h4>
+        <div className="space-y-3 text-sm text-gray-300">
+
+          {/* Phone */}
+          <a
+            href="tel:9303537600"
+            className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200"
+          >
+            <Phone className="w-4 h-4" />
+            <span>9303537600</span>
+          </a>
+
+          {/* Email */}
+          <a
+            href="mailto:fsnlkonoiketennis@gmail.com"
+            className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200"
+          >
+            <Mail className="w-4 h-4" />
+            <span>fsnlkonoiketennis@gmail.com</span>
+          </a>
+
+          {/* Calendar – no link needed */}
+          <div className="flex items-center justify-center md:justify-start space-x-2 hover:text-white transition-colors duration-200">
+            <Calendar className="w-4 h-4" />
+            <span>20-21 Dec., 2025</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {/* Social + Copyright */}
+   <div className="border-t border-gray-700 pt-8">
+  <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+
+    {/* Social Icons Section */}
+    <div className="flex flex-col items-center md:items-start space-y-3">
+      
+      {/* Follow Text */}
+      <h1 className="text-gray-300 text-lg font-semibold flex items-center">
+        Follow us on 
+        <span className="mx-2 transform translate-y-[-1px]">→</span>
+      </h1>
+
+      {/* Social Icons Container */}
+      <div className="flex items-center space-x-4">
+        {[
+          {
+            icon: <Facebook className="w-6 h-6" />,
+            url: "https://www.facebook.com/share/1WM36ii4c5/?mibextid=wwXIfr",
+            color: "hover:bg-blue-600",
+            label: "Facebook"
+          },
+          {
+            icon: <Instagram className="w-6 h-6" />,
+            url: "https://www.instagram.com/fsnlkonoiketennis?igsh=MTk3a3duNGxvaDM5OQ%3D%3D&utm_source=qr",
+            color: "hover:bg-gradient-to-r from-purple-600 to-pink-600",
+            label: "Instagram"
+          },
+          {
+            icon: <Youtube className="w-6 h-6" />,
+            url: "https://youtube.com/",
+            color: "hover:bg-red-600",
+            label: "YouTube"
+          }
+        ].map((social, index) => (
+          <a
+            key={index}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center transition-all duration-300 ${social.color} hover:scale-110 transform shadow-lg border border-gray-600`}
+            aria-label={social.label}
+          >
+            {social.icon}
+          </a>
+        ))}
+      </div>
+
+      {/* Instagram Handle */}
+      <h1 className="text-gray-300 text-base font-medium bg-gray-800 px-3 py-1 rounded-lg">
+        fsnlkonoiketennis
+      </h1>
+    </div>
+
+    {/* Copyright Section */}
+    <div className="text-center md:text-right space-y-2">
+      <p className="text-gray-300 text-base flex items-center justify-center md:justify-end font-medium">
+        Made with <Heart className="w-5 h-5 mx-2 text-red-500 fill-current animate-pulse" /> 
+        by FSNLKonoike Tennis
+      </p>
+      
+      <p className="text-gray-300 text-lg font-semibold">
+        © THE FSNL - KONOIKE Invitational Tennis Tournament 2025
+      </p>
+      
+      <p className="text-gray-400 text-sm bg-gray-800 inline-block px-3 py-1 rounded-md">
+        Organized by DDBTA – Smriti Nagar Tennis Academy, Bhilai
+      </p>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+</footer>
+
     </div>
   );
 };
