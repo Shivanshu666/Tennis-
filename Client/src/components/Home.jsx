@@ -286,7 +286,7 @@ const Home = () => {
           time: "17:40-18:00",
           event:(
             <>
-            Networking & Dedicated Photo Session with <strong>Mr. Vishnu Vardhan</strong> 
+            Networking & Dedicated Photo Session with <strong>Mr. Vishnu Vardhan & Mr. Abhishek Mukherjee </strong> 
             </>
           )
         },
@@ -296,7 +296,7 @@ const Home = () => {
           (
             <>
             
-            Fireside Chat - Interactive session of <strong>Mr. Vishnu Vardhan</strong> with parents & players
+            Fireside Chat - Interactive session of <strong>Mr. Vishnu Vardhan & Mr. Abhishek Mukherjee </strong> with parents & players
             </>
           )
         },
