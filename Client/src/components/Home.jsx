@@ -212,7 +212,7 @@ const Home = () => {
     {
       date: "FRIDAY 19 DECEMBER 2025",
       items: [
-        { time: "17:00 - 17:45", event: "Distribution of participating T-shirt, Tournament Handbook" },
+        { time: "17:00 - 17:45", event: "Distribution of participating T-shirt, Tournament Handbook & Food Coupons" },
         { time: "18:00", event: "Pre-Event Press Conference to be followed by Draw Ceremony" },
      
       ],
