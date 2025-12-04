@@ -578,7 +578,7 @@ const Home = () => {
                   <MapPin className="w-4 h-4 text-green-300 mt-[2px]" />
                   <div>
                     <p className="text-green-200 text-[15px] font-bold text-start uppercase tracking-widest">Venue</p>
-                    <p className="text-white font-bold text-base text-start leading-tight">Bhilai Tennis Complex, Sector-5, Bhilai</p>
+                    <p className="text-white font-bold text-base text-start leading-tight">BSP Tennis Complex, Civic Center, Bhilai</p>
                   </div>
                 </div>
               </div>
@@ -1619,7 +1619,7 @@ const Home = () => {
 
         <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
           <MapPin className="w-4 h-4" />
-          <span className="text-sm">Bhilai Tennis Complex, Sector-5, Bhilai</span>
+          <span className="text-sm">BSP Tennis Complex, Civic Center, Bhilai</span>
         </div>
       </div>
 
