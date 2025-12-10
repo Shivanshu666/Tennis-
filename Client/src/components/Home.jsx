@@ -798,7 +798,7 @@ const Home = () => {
                   <div className="flex justify-center space-x-2 text-xs mt-3">
                     {/* Google Form */}
                     <a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform"
+                      // href="https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
