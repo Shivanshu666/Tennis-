@@ -605,11 +605,11 @@ const Home = () => {
 
             {/* Register Button */}
             <button
-              onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform?pli=1&fbzx=8530774600493220154', '_blank')}
+              // onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSc4EQiX_aiiL9q7GlsnjLQuYdae3CXYEx0VDAded7ufnQLGtg/viewform?pli=1&fbzx=8530774600493220154', '_blank')}
               className="group px-8 py-4 bg-blue-600 hover:cursor-pointer text-white font-semibold rounded-xl hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300 shadow-2xl flex items-center gap-3 w-full sm:w-auto justify-center"
             >
               <i className="fas fa-user-plus group-hover:scale-110 transition-transform"></i>
-              <span>Register Now & Claim Your Spot</span>
+              <span>Registration Closed</span>
             </button>
           </div>
 
