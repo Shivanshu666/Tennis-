@@ -791,8 +791,8 @@ const Home = () => {
                     </div>
 
                     <h4 className="text-xl font-bold text-gray-900 mb-2">Registration Deadline</h4>
-                    <div className="text-2xl font-bold text-green-600 mb-2">15th Dec., 2025</div>
-                    <p className="text-gray-600 mb-3">Submit via Google Form or Direct Message</p>
+                    <div className="text-2xl font-bold text-green-600 mb-2">Registration Closed</div>
+                    
                   </div>
 
                   <div className="flex justify-center space-x-2 text-xs mt-3">
